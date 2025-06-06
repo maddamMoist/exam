@@ -7,30 +7,7 @@
 
 <script>
 
-	const notesOld = [
-
-			["blah blah blah", "<ul><li>bing</li><li>bing</li><li>bing</li><ul>"],
-			["bop bop bop", "<ul><li>bang</li><li>bang</li><li>bang</li><ul>"],
-			["boo booooo", "<ul><li>bah</li><li>bah</li><li>bah</li></ul>"]
-
-		];
-
-
-	const notesold2 = [
-
-			["Informed consent includes",
-				"- Right to withdraw\n- Foreseeable risks\n- Information collection and storage\n- Confidentiality and its limits"],
-			["Information gathered in this context might not be accepted as evidence in litigation", "Special ethical concerns re hypnosis and other alternations of consciousness"],
-			["Confidential information may be disclosed if", "This may happen if a client consents, if required by law, or to protect an identifiable person from specified risk of harm"],
-			["More confidentiality issues in this location", "More of these issues may arise in rural and remote settings"],
-			["Clients can access this on request, when reasonable", "When can clients access information and notes related to them?"],
-			["Record keeping includes", "Examples include notes, messages, emails, diary entries, appointment arrangements, test results, and reports."],
-			["Records must be kept for how long", "These are to be kept for a minimum of 7 years (after the age of 18)"],
-			["In Australia, most misconduct cases appear to be related to",	"Poor communication is responsible for most..."],
-			["Stages of ethical decision making", "1.	Defining the problem\n2.	Considering options\n3.	Monitoring actions\n4.	Resolving the problem"],
-			["Recording methods for behavioural observation", "- Narrative recording\n- Interval recording\n- Event recording\n- Rating recording"]
-
-			];
+	
 
   
 
@@ -86,7 +63,7 @@
 	{
 		document.body.addEventListener('click', clickAnywhere, true); 
 		var table = document.getElementById("sourceTable");
-		console.log(table);
+		
 		for (var i = 0, row; row = table.rows[i]; i++) 
 		{
 			notes.push([row.cells[0].innerHTML, row.cells[1].innerHTML]);
@@ -295,6 +272,42 @@
         </tr>
         <tr>
             <td>
+                <p>DASS depression severity ranges</p>
+            </td>
+            <td>
+                <p>Normal: 0-9</p>
+                <p>Mild: 10-13</p>
+                <p>Moderate: 14-20</p>
+                <p>Severe: 21-27</p>
+                <p>Extremely Severe: 28+</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>DASS anxiety severity ranges</p>
+            </td>
+            <td>
+                <p>Normal: 0-7</p>
+                <p>Mild: 8-9</p>
+                <p>Moderate: 10-14</p>
+                <p>Severe: 15-19</p>
+                <p>Extremely Severe: 20+</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>DASS stress severity ranges</p>
+            </td>
+            <td>
+                <p>Normal: 0-14</p>
+                <p>Mild: 15-18</p>
+                <p>Moderate: 19-25</p>
+                <p>Severe: 26-33</p>
+                <p>Extremely Severe: 34+</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <p>K10 (Kessler) details</p>
             </td>
             <td>
@@ -310,6 +323,38 @@
                 <p>Emotional and behavioural problems screening questionnaire for children and adolescents (4-17).</p>
                 <p>Used in initial assessment.</p>
                 <p>25 items, 5 subscales</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Your CPD portfolio should include</p>
+            </td>
+            <td>
+                <p>What is this collection of records called? Registered psychologists need to maintain:
+                <ul>
+                    <li>Learning plan</li>
+                    <li>CPD activity log</li>
+                    <li>Peer consultation log</li>
+                    <li>Peer consultation journal</li>
+                    <li>Professional development journal</li>
+                    <li>Evidence of CPD</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Typical differentiating factor between delusions in schizophrenia vs. delusional disorder</p>
+            </td>
+            <td>
+                <p>Whether delusions are bizarre (highly unprobable) in nature often differentiates which two disorders</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Differentiating factor between compulsions in OCD vs. OCPD</p>
+            </td>
+            <td>
+                <p>Whether compulsions are ego-syntonic or ego-dystonic differentiates which two disorders?</p>
             </td>
         </tr>
         <tr>
@@ -331,6 +376,7 @@
             </td>
             <td>
                 <p>Scale to assess intelligence of preschool and early primary school children</p>
+                <p>Similar to WISC and WAIS. 15 subtests. VCI. VSI. FRI. WMI. PSI.</p>
             </td>
         </tr>
         <tr>
@@ -407,10 +453,18 @@
         </tr>
         <tr>
             <td>
+                <p>MMPI-2</p>
+            </td>
+            <td>
+                <p>A self-report personality inventory, contains 567 true-false items.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <p>Self-Directed Search (SDS)</p>
             </td>
             <td>
-                <p>Self-Assessed career inventory for ages 15+ to identify career interests and match to occupations. Categories: Realistic, Investigative, Artistic, Social, Enterprising, and Conventional</p>
+                <p>Self-Assessed career inventory for ages 15+ to identify career interests and match to occupations. Categories: Realistic, Investigative, Artistic, Social, Enterprising, and Conventional (RIASEC)</p>
             </td>
         </tr>
         <tr>
@@ -458,7 +512,7 @@
                 <p>Global Assessment of Functioning (GAF)</p>
             </td>
             <td>
-                <p>A measure of someone&rsquo;s overall psychological functioning. 3 domains: psychological symptom severity, social functioning, occupational impairment.</p>
+                <p>A measure of someone&rsquo;s overall psychological functioning. 3 domains: psychological symptom severity, social functioning, occupational impairment. Each domain is rated from 0-100 by the psychologist, based on available information.</p>
             </td>
         </tr>
         <tr>
@@ -474,7 +528,7 @@
                 <p>Outcome Rating Scales (ORS)</p>
             </td>
             <td>
-                <p>A brief measure of client progress, used in mental health treatment settings. Measures wellbeing.</p>
+                <p>A brief measure of client progress, used in mental health treatment settings. Completed by the client (each session usually). 4 sliding scales, that ask how you are going: Individually, Interpersonally, Socially, and Overall.</p>
             </td>
         </tr>
         <tr>
@@ -539,6 +593,18 @@
                         <li>with disturbance of emotions and conduct</li>
                         <li>unspecified</li>
                     </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>PHQ-9 (Patient Health Questionnaire-9)</p>
+            </td>
+            <td>
+                <div>
+                    <p>
+                        A multipurpose instrument for screening, diagnosing, monitoring and measuring the severity of depression. 9 Likert-scale items.
+                    </p>
                 </div>
             </td>
         </tr>
