@@ -1,4 +1,9 @@
 body
 {
-	font-size: 70pt;
+	font-size: 30pt;
+}
+
+#content
+{
+	background-color:#EEEEEE;
 }
