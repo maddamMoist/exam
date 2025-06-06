@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>NPE Revision</title>
+	<link href="styles.css" rel="stylesheet" type="text/css">
+
+<script>  
+
+	var shuffledNotes;
+	var currentNote;
+	var notes = [];
+
+	const THINK = 0;
+	const CHECK = 1;
+
+	var state = THINK;
+
+
+	function clickAnywhere()
+	{
+		console.log("click!");
+		if (state==THINK)
+		{
+			document.getElementById("content").innerHTML = "ANSWER:\n" + currentNote[1];
+			state = CHECK;
+		}
+		else if (state == CHECK)
+		{
+			showNewQuestion();
+			state = THINK;
+		}
+	}
+
+	function showNewQuestion()
+	{
+		if(shuffledNotes == undefined || shuffledNotes.length == 0)
+		{
+			shuffledNotes = [].concat(notes);
+			shuffle(shuffledNotes);
+			for(var i = 0; i < shuffledNotes.length; i++)
+			{
+				if(Math.random() > 0.5)
+				{
+					var note = shuffledNotes[i];
+					var temp = note[0];
+					note[0] = note[1];
+					note[1] = temp;
+				}
+			}
+		}
+
+		currentNote = shuffledNotes.pop();
+		document.getElementById("content").innerHTML = "QUESTION:\n" + currentNote[0];
+	}
+
+
+	function init()
+	{
+		document.body.addEventListener('click', clickAnywhere, true); 
+		var table = document.getElementById("sourceTable");
+		console.log(table);
+		for (var i = 0, row; row = table.rows[i]; i++) 
+		{
+			notes.push([row.cells[0].innerHTML, row.cells[1].innerHTML]);
+		}
+		showNewQuestion();
+	}
+
+		
+	
+
+	function shuffle(array) 
+	{
+	  let currentIndex = array.length;
+
+	  // While there remain elements to shuffle...
+	  while (currentIndex != 0) {
+
+	    // Pick a remaining element...
+	    let randomIndex = Math.floor(Math.random() * currentIndex);
+	    currentIndex--;
+
+	    // And swap it with the current element.
+	    [array[currentIndex], array[randomIndex]] = [
+	      array[randomIndex], array[currentIndex]];
+	  }
+	}
+</script>
+</head>
+
+<body onload="init();">
+
+<div id="content">
+
+</div>
+
+<table id = "sourceTable" style = "visibility: hidden;">
+    <tbody>
+        <tr>
+            <td>
+                <p>Reactive Attachment Disorder</p>
+            </td>
+            <td>
+                <p>A disorder, evident before age 5, where a child lacks emotional attachment to their care giver. They dont seek respond to comfort from them. It also requires a history of neglectful or unstable parenting that is presumed to be responsible. Autism excludes this dx. Its specified as persistent if it lasts more than 12 months. Developmental age must be 9+</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Disinhibted Social Engagement Disorder</p>
+            </td>
+            <td>
+                <p>A disorder, for children, where the child is unusually likely to engage with unfamiliar adults. It requires a history of neglectful or unstable parenting that is presumed to be responsible. The behaviour cant be explained by ADHD impulsivity. Its specified as persistent if it lasts more than 12 months. Developmental age must be 9+</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Criteria qualifying for a PTSD traumatic event</p>
+            </td>
+            <td>
+                <p>Actual or threatened death, serious injury, or sexual violence</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Ways that a traumatic event (PTSD, acute stress disorder) can be experienced</p>
+            </td>
+            <td>
+                <p>directly experiencing</p>
+                <p>witnessing, in-person, it happening to someone else</p>
+                <p>learning that it has happened to someone you are close to</p>
+                <p>repeated exposure to the details (cops, ambos). Cant be just a media thing (unless its your job to see the media)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>PTSD criteria overview</p>
+            </td>
+            <td>
+                <p>A. Exposure to event.<br />B. intrusions and distress about event.<br />C. avoidance of reminders about the event.<br />D. distorted/impaired thoughts, memories, beliefs, sense of self.<br />E. arrousal, reactivity, sleep issues.<br />F. Symptoms present for longer than 1 month. </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>1. depersonalisation; 2. derealisation</p>
+            </td>
+            <td>
+                <p>1. dissociative state of detachment from ones thoughts, feelings, and body.<br />2.dissociative state of detachment from the external world</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>PTSD specifiers</p>
+            </td>
+            <td>
+                <p>stressor/trauma related disorder with the following specifiers:<br />with dissociative symptoms (depersonalisation or derealisation);<br />with delayed expression (full symptom criteria not met until 6 months after the event</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>PTSD arrousal/reactivity criteria</p>
+            </td>
+            <td>
+                <p>irritability; recklessness; hypervigilance; easily startled; concentration problems; sleep distrubance</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Main difference between schizoid(1) and schizotypal(2) PD</p>
+            </td>
+            <td>
+                <p>Disorder 1 is involves a lack of desire to be close to people, whereas disorder 2 involves an inability to get close to people because of symptoms.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>negative symptoms of schizophrenia</p>
+            </td>
+            <td>
+                <p>deminished emotional expression; Avolition; Alogia (diminished speech); Anhedonia; Asociality</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>delusional disorder overview</p>
+            </td>
+            <td>
+                <p>A disorder involving delusions for 1 month or longer. Schizophrenia excludes it. Behaviour is NOT markedly odd, and if there are hallucinations they are obviously related to the delusion and not super prominent. specify if delusions are bizarre</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>7 specifiers for delusions in delusion disorder</p>
+            </td>
+            <td>
+                <p>erotomanic;  grandiose;  jealous;  persecutory; somatic;  mixed;  unspecified</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>brief psychotic disorder duration</p>
+            </td>
+            <td>
+                <p>psychotic disorder lasting only 1 day to 1 month</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>schizophreniform disorder duration</p>
+            </td>
+            <td>
+                <p>a disorder similar to schizophrenia, but only lasts between 1 to 6 months.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What are the 3 criteria A symptoms of schizophrenia of which one MUST be present? And what are the 2 others? And how many must be significantly present for ONE MONTH?</p>
+            </td>
+            <td>
+                <p>
+                    For schizophrenia, how long do TWO criteria A symptoms have to be present?
+                    atleast one of the symptoms must be:
+                    1.delusions, 2.hallucinations, or 3.disorganised speech.
+                    The other one can be 4.grossly disorganised or catatonic behaviour or 5.negative symptoms</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Schizophrenia requires full criteria A is met for one month, but ongoing disturbance (often just negative symptoms) must be present for how long?</p>
+            </td>
+            <td>
+                <p>Schizophrenia requires that some disturbance be present for atleast 6 months. But the full crtieria A only needs to be met for how long?
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>One way to rule out MDD or bipolar with psychotic features when diagnosing schizophrenia is if no major depressive/manic epsiodes occur during the active-phase of schizphrenia. What is the other way?</p>
+            </td>
+            <td>
+                <p>One way to rule out MDD or bipolar with psychotic features when diagnosing schizophrenia is if depressive/manic epsiodes occur for a minority of both the active-phase and residual periods of the illness. What is the other way?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>the 3 specifiers for schizophrenia include: severity (a 5-point scale based on primary psychosis symptoms); with catatonia;  and?</p>
+            </td>
+            <td>
+                <p>the 3 specifiers for schizophrenia include: the current recurrence/remission status (e.g., First episode, currently in full remission; or Multiple episodes, currently in acute episode); with catatonia; and?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Schizophrenia can only be diagnosed in addition to autism or a childhood onset communication disorder if?</p>
+            </td>
+            <td>
+                <p>delusions or hallucinations must be prominent in order to justify a schizophrenia diagnosis in addition to what?
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Age where child-specific criteria applies to PTSD</p>
+            </td>
+            <td>
+                <p>children 6 years or younger have separate criteria for which trauma- and stressor-related disorder?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Separation anxiety symptoms must be present for at least 4 weeks in children. How long for adults?</p>
+            </td>
+            <td>
+                <p>Separation anxiety symptoms must be present for at least 6 months in adults. How long for children?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Acute stress disorder duration</p>
+            </td>
+            <td>
+                <p>if PTSD symptoms are present for atleast 3 days, but dont last longer than 1 month, what is the correct diagnosis?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>3 examples are provided for social anxiety in the DSM. One is social interaction (conversation, meeting unfamiliar people), another is performing (e.g., giving a speech), what is the other one?</p>
+            </td>
+            <td>
+                <p>3 examples are provided for social anxiety in the DSM. One is social interaction (conversation, meeting unfamiliar people), another is being observed (e.g., eating or drinking in public), what is the other one?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Define Hallucinogen Persisting Perception Disorder</p>
+            </td>
+            <td>
+            <p>What disorder describes the problematic reexperienceing of perceptual symptoms following the cessation of hallucinogen use?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Substance use disorders are characterised by problematic behaviours relating to the substance use, strong cravings and a lack of control over the substance use, increased tolerance, and withdrawl symptoms without it. sufficient symptoms must be observed within a period of how long?</p>
+            </td>
+            <td>
+            <p>What are the characteristics of substance use disorders? 2 need to be observed within a 12 month period.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>When somatic symptoms are related to a genuine medical condition, what is necessary to diagnose somatic symptom disorder?</p>
+            </td>
+            <td>
+            <p>What diagnosis is appropriate when EXCESSIVE thoughts, feelings, or behvaiours occur in relation to a genuine medical condition?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Somatic symptom disorder that persists longer than 6 months is specified as "persistent" (which is typically the case). What are the other two specifiers?</p>
+            </td>
+            <td>
+            <p>One of the 3 specifiers for somatic symptom disorder is severity, another is "with predominant pain" (if it's mostly about pain). What is the last specifier?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Define "prodromal", in the context of disorders like schizohprenia?</p>
+            </td>
+            <td>
+                <p>What is an adjective (medical) that describes the period between the first appearance of symptoms and full symptom development?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Social anxiety disorder has one specifier: "performance only" (when the anxiety is only related to performance).<br /><br />Social anxiety disorder symptoms must be persistent and typically last atleast how long?</p>
+            </td>
+            <td>
+                <p>Social anxiety criteria specifies typically at least 6 months duration.<br /><br />What is the one specifier for social anxiety disorder?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>6 specifiers for adjustment disorder</p>
+            </td>
+            <td>
+                <p>with depressed mood;  with anxiety;  with anxiety and depressed mood;  with disturbance of conduct;  with mixed disturbance of emotions and conduct;  unspecified</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>timing of adjustment disorder</p>
+            </td>
+            <td>
+                <p>symptoms for this disorder begin within 3 months of stressor onset, and dont continue longer than 6 months after the stressor (and it's consequences) cease.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>timing of antisocial personality disorder</p>
+            </td>
+            <td>
+                <p>Only diagnosed after 18 years, symptoms of this disorder must have been present since 15 years, and symptoms of conduct disorder must have been present before 15 years.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>antisocial personality disorder overview</p>
+            </td>
+            <td>
+                <p>a disorder for adults: <br />failure to follow the law;  lying/conning;  impulsivity;  irritability;  recklessness;  irresponsiblity;  lack of remorse </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>manic/hypomanic episode description</p>
+            </td>
+            <td>
+                <p>grandiosity;  lack of need for sleep;  goal-drected activity;  more talkative;  flight of ideas;  distractibility;  risky activity </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>manic VS hypomanic episode distinction</p>
+            </td>
+            <td>
+                <p>Distinction based on whether the episode is severe enough to cause marked impairment in social or occupational functioning or to necessitate hospitalization</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Timing of conduct disorder</p>
+            </td>
+            <td>
+                <p>Atleast 3 of the 15 behaviours inidicative of this disorder must have been observed in the past 12 months, and atleast 1 in the last 6 months. If they are older than 18, this dx is only appropriate if they dont meet the criteria for antisocial PD. </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>"With limited prosocial emotions" specifier for conduct disorder</p>
+            </td>
+            <td>
+                <p>This specifier is confirmed by one of the following characteristics being persistent for 12 months: <br />lack of remorse or guilt (for cruel behaviour), callous / lack of empathy (for their victims), lack of concern for performance (at school etc.), or shallow/deficient affect.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Details for the onset specifier for conduct disorder</p>
+            </td>
+            <td>
+                <p>Which disorder?:<br />Childhood onset = atleast 1 symptom before age 10. Adolescent onset = nothing before age 10. childhood onset type are usually male, and usually more persistent(lasting longer) and severe</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>conduct disorder behaviours</p>
+            </td>
+            <td>
+                <p>A disorder for children: <br />aggression/cruelty;  destruction;  lying/theft;  rule-breaking</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Pica overview</p>
+            </td>
+            <td>
+                <p>A disorder involving persistent eating of nonnutritive, nonfood substances over a period of at least 1 month. must be inappropriate to developmental level. More common in children. For adults, usually occurs alongside intellectual disability. </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Rumination disorder overview</p>
+            </td>
+            <td>
+                <p>A disorder involving persistently regurgiating food (and re-chewing, re-swallowing, or spitting out) for at least 1 month. anorexia and bulimia exclude it.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>avoidant/restricitve food intake disorder overview</p>
+            </td>
+            <td>
+                <p>A disorder where eating is limited by sensory discomfort, lack of interest, or fears/negative associations. Leading to nutritional defiiciency or low weight. No evidence of disturbed body-image.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>anorexia nervosa overview</p>
+            </td>
+            <td>
+                <p>A disorder where energy intake is restricted and leads to significantly low weight. intense fear of becomnig fat. disturbed body-image or lack of recognition of seriousness of weight loss</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>anorexia nervosa subtypes</p>
+            </td>
+            <td>
+                <p>binging/purging and restricting are the two subtypes of what disorder?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>bulimia nervosa overview</p>
+            </td>
+            <td>
+                <p>A disorder involving frequent binge-eating which they lack control of, and compensatory actions to prevent weight gain (vomiting, laxitives, exercise, fasting). disturbed body image. Sufferers are typically normal weight or overweight.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Main distinctions between anorexia and bulimia</p>
+            </td>
+            <td>
+                <p>Whether or not the sufferer is significantly underweight. how restrictive their typically eating is. How afraid they are of gaining weight.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Binge-eating disorder overview</p>
+            </td>
+            <td>
+                <p>A disorder involving hard-to-control binge-eating atleat once per week for 3 months. No inappropriate compensatory behaviours (e.g., purging)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>GAD timing</p>
+            </td>
+            <td>
+                <p>Which anxiety related diagnosis requires that atleast 3 symptoms occur more days than not for 6 months?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>GAD 6 symptoms</p>
+            </td>
+            <td>
+                <p>Which disorder?:<br />restlessness<br />easily fatigued<br />difficulty concentrating<br />irritability<br />muscle tension<br />sleep disturbance</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Delirium Overview</p>
+            </td>
+            <td>
+                <p>A disorder that involves a reduced ability to control and sustain attention. It develops quickly (1 hour to a few days) and tends to fluctuate in severity. It must be accomanied by another cognitive deficit too (memory, language, perception, etc.), and it must be attribuatable to a medical condition or a substance. It cant occur only in a reduced arousal state (e.g., a coma)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Delirium specifiers</p>
+            </td>
+            <td>
+                <p>A disorder that specifies which medical condition or medication causes it, whether it is acute (hours-days) or persistent (weeks-months), and what level of activity accompanies it (hyperactive, hypoactive, mixed).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Major neurocognitive disorder</p>
+            </td>
+            <td>
+                <p>A disorder that involves significant cognitive decline in one or more cognitive domains, evidenced by observation (and concern) or testing. deficits must interfere with independence. Specifies etiology, presence of behavioural disturbance, and severity (level of independence)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Major neurocognitive disorder etiologies</p>
+            </td>
+            <td>
+                <p>A disorder that specifies the following etiologies:<br />Alzheimer’s disease<br />Frontotemporal lobar degeneration<br />Lewy body disease<br />Vascular disease<br />Traumatic brain injury<br />Substance/medication use<br />HIV infection<br />Prion disease<br />Parkinson’s disease<br />Huntington’s disease<br />Another medical condition<br />Multiple etiologies<br />Unspecified</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Cognitive domains for neurocognitive disorders</p>
+            </td>
+            <td>
+                <p>domains of deficit related to which disorders?:<br /> complex attention, executive function, learning and memory, language, perceptual-motor, and social cognition.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Mild neurocognitive disorder (differences from major neurocognitive disorder)</p>
+            </td>
+            <td>
+                <p>this disorder involves "modest" cognitive impairment, and does not impact independence or fucntioning (although strategies might be required)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>MDD symptoms must inlcude either 1 or 2. and 5 or more symptoms must be present for a two week period. What are the symptoms?</p>
+            </td>
+            <td>
+                <p>which MDD symptoms are particularly necessary, and how many are necessary, and for how long><br />1.depressed mood most of the day, nearly every day, as evidenced by self-report or observation of others<br />2.diminshed pleasure in previously enjoyed activities<br />3.weight loss or gain<br />4.insomnia or hypersomnia nearly every day<br />5.psychomotor agitation or retardation nearly every day<br />6.fatigue nearly every day<br />7.excessive worthlessness or guilt<br />8.diminished ability to think or concentrate<br />9.recurrent thoughts of death</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>general specifiers for MDD</p>
+            </td>
+            <td>
+                <p>specifiers for which disorder?<br />severity (mild, moderate, severe)<br />with psychotic features<br />remission status (partial or full)<br />single or recurrent<br />additional features</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>additional feautures specifiers for MDD</p>
+            </td>
+            <td>
+                <p>With anxious distress<br />With mixed features<br />With melancholic features<br /><br />With atypical features<br />With mood-congruent psychotic features<br />With mood-incongruent psychotic features<br />With catatonia<br />With peripartum onset<br />With seasonal pattern<br /></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>How to specify sub-bipolar hypomania with MDD?</p>
+            </td>
+            <td>
+                <p>'with mixed features' specifier means what for MDD?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>How to specify MDD that emphasises lack of leasure, psychomotor agitation/retardation, despondency/despair, worse symptoms in the morning, early-waking, weight loss, and guilt?</p>
+            </td>
+            <td>
+                <p>'with melancholic features' specifier means what for MDD?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>How to specify MDD that inlcudes delusions or hallucinations that match the theme of depression (despair, worthlessness, etc.)?</p>
+            </td>
+            <td>
+                <p>'with mood-congruent psychotic features' specifier means what for MDD?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>How to specify MDD that inlcudes delusions or hallucinations that do NOT always match the theme of depression (despair, worthlessness, etc.)?</p>
+            </td>
+            <td>
+                <p>'with mood-incongruent psychotic features' specifier means what for MDD?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>How to specify MDD that occurs during pregnancy or within 4 weeks of giving birth?</p>
+            </td>
+            <td>
+                <p>'with peripartum onset' specifier means what for MDD?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>OCD obsession definition</p>
+            </td>
+            <td>
+                <p>thoughts, images, or urges, experienced as intrusive and unwanted; which one attempts to suppress or neutralise through behaviour or mental action</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>OCD compulsion definition</p>
+            </td>
+            <td>
+                <p>repetitive behaviour or mental act that one feels driven to perform, with rigid rules, in response to intrusive/unwanted thought/image/urge. It must aimed at reducing anxiety or preventing a dreaded situation, and it must be either realistically unconnected to the feared outcome, or clearly excessive.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Specifiers for OCD</p>
+            </td>
+            <td>
+                <p>Specifiers for which disorder?<br />Level of insight (good or fair, poor, absent/delusional); tic-related (30% of sufferers have tic-diorder history)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Timing for ODD</p>
+            </td>
+            <td>
+                <p>A disorder for which symptoms must be present for atleast 6 months (involving vindictiveness and arguing)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Timing for ODD</p>
+            </td>
+            <td>
+                <p>A disorder for which symptoms must be present for atleast 6 months (involving vindictiveness and arguing)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>ODD symptoms</p>
+            </td>
+            <td>
+                <p>Atleast 4 of the following are required for which dx?<br /> often loses temper; easily annoyed; often angry/resentful; often argues with authority figures; often defies rules; deliberately annoys others; blames others for own misbehaviour; spiteful/vindictive atleast twice in past 6 months</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>ODD symptoms must be directed at?</p>
+            </td>
+            <td>
+                <p>A disorder for which symptomatic behaviour must be directed at atleast one person who is not a sibling.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>ODD specifiers</p>
+            </td>
+            <td>
+                <p>A disorder (usually for children) that specifies severity based on the amount of environments symptoms occur in (mild = 1; moderate = 2; severe >= 3)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>How many panic attack symptoms are necessary?</p>
+            </td>
+            <td>
+                <p>Requires 4 of the following:<br />paresthesias; derealisation; feeling like I'm "crazy"; heart action abnormalities; sweating; trembling; breathing difficulty; feelings of choking; chest pain; nausea; dizzy/faint; chills/heat; fear of dying</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>panic disorder requires the following symptoms be present for how long, after atleast one panic attack?</p>
+            </td>
+            <td>
+                <p>How many times must these symptoms must be present for 1 month following a panic attack, to qualify for panic disorder?<br />persistent worry about additional panic attacks; maladaptive behaviour change related to panic attacks (e.g., avoidance).</p>
+            </td>
+        </tr>
+
+        
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>
