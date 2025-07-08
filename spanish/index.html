@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Spanish Test</title>
+	<link href="styles.css" rel="stylesheet" type="text/css">
+
+<script>  
+
+	var shuffledNotes;
+	var currentNote;
+	var notes = [];
+
+	const THINK = 0;
+	const CHECK = 1;
+
+	var state = THINK;
+
+
+	function clickAnywhere()
+	{
+		console.log("click!");
+		if (state==THINK)
+		{
+			document.getElementById("content").innerHTML = "ANSWER:\n" + currentNote[1];
+			state = CHECK;
+		}
+		else if (state == CHECK)
+		{
+			showNewQuestion();
+			state = THINK;
+		}
+	}
+
+	function showNewQuestion()
+	{
+		if(shuffledNotes == undefined || shuffledNotes.length == 0)
+		{
+			shuffledNotes = [].concat(notes);
+			shuffle(shuffledNotes);
+			for(var i = 0; i < shuffledNotes.length; i++)
+			{
+				if(Math.random() > 0.5)
+				{
+					var note = shuffledNotes[i];
+					var temp = note[0];
+					note[0] = note[1];
+					note[1] = temp;
+				}
+			}
+		}
+
+		currentNote = shuffledNotes.pop();
+		document.getElementById("content").innerHTML = "QUESTION:\n" + currentNote[0];
+	}
+
+
+	function init()
+	{
+		document.body.addEventListener('click', clickAnywhere, true); 
+		var table = document.getElementById("sourceTable");
+		console.log(table);
+		for (var i = 0, row; row = table.rows[i]; i++) 
+		{
+			notes.push([row.cells[0].innerHTML, row.cells[1].innerHTML]);
+		}
+		showNewQuestion();
+	}
+
+		
+	
+
+	function shuffle(array) 
+	{
+	  let currentIndex = array.length;
+
+	  // While there remain elements to shuffle...
+	  while (currentIndex != 0) {
+
+	    // Pick a remaining element...
+	    let randomIndex = Math.floor(Math.random() * currentIndex);
+	    currentIndex--;
+
+	    // And swap it with the current element.
+	    [array[currentIndex], array[randomIndex]] = [
+	      array[randomIndex], array[currentIndex]];
+	  }
+	}
+</script>
+</head>
+
+<body onload="init();">
+
+<div id="content">
+
+</div>
+
+<table id = "sourceTable" style = "visibility: hidden;">
+    <tbody>
+    	<tr><td>Yo soy de Santiago.</td><td>I’m from Santiago.</td></tr>
+<tr><td>¿Tú eres nuevo en esta pega?</td><td>Are you new at this job?</td></tr>
+<tr><td>Ella es seca para las matemáticas.</td><td>She’s amazing at math.</td></tr>
+<tr><td>Nosotros somos buenos amigos desde el colegio.</td><td>We’ve been good friends since school.</td></tr>
+<tr><td>Ellos son súper simpáticos con todos.</td><td>They’re really friendly with everyone.</td></tr>
+<tr><td>Yo estoy cansado después de la pega.</td><td>I’m tired after work.</td></tr>
+<tr><td>¿Tú estás bien? Te ves medio raro.</td><td>Are you okay? You look kind of off.</td></tr>
+<tr><td>Él está en el metro todavía.</td><td>He’s still on the subway.</td></tr>
+<tr><td>Estamos listos para salir.</td><td>We’re ready to go out.</td></tr>
+<tr><td>Están ocupados con un proyecto nuevo.</td><td>They’re busy with a new project.</td></tr>
+<tr><td>Yo fui al sur el verano pasado.</td><td>I went to the south last summer.</td></tr>
+<tr><td>¿Tú fuiste a la fiesta de la Cata?</td><td>Did you go to Cata’s party?</td></tr>
+<tr><td>Él fue el que me ayudó con la mudanza.</td><td>He was the one who helped me move.</td></tr>
+<tr><td>Fuimos a la playa por el finde largo.</td><td>We went to the beach for the long weekend.</td></tr>
+<tr><td>Fueron súper puntuales.</td><td>They were super punctual.</td></tr>
+<tr><td>Yo era más tímido cuando chico.</td><td>I used to be shyer when I was little.</td></tr>
+<tr><td>¿Tú eras de Valparaíso, cierto?</td><td>You were from Valparaíso, right?</td></tr>
+<tr><td>Ella era bien desordenada antes.</td><td>She used to be really messy before.</td></tr>
+<tr><td>Éramos compañeros en la U.</td><td>We were classmates at university.</td></tr>
+<tr><td>Eran otros tiempos, po.</td><td>It was a different time, man.</td></tr>
+<tr><td>Voy al super, ¿querís algo?</td><td>I’m going to the store, want anything?</td></tr>
+<tr><td>¿Tú vas seguido al cerro San Cristóbal?</td><td>Do you go to San Cristóbal hill often?</td></tr>
+<tr><td>Ella va todos los domingos a ver a su abuela.</td><td>She goes every Sunday to visit her grandma.</td></tr>
+<tr><td>Vamos al cine después de almorzar.</td><td>We’re going to the movies after lunch.</td></tr>
+<tr><td>Van a llegar tarde como siempre.</td><td>They’re going to be late like always.</td></tr>
+<tr><td>Yo tengo sueño, no dormí nada anoche.</td><td>I’m sleepy, I didn’t sleep at all last night.</td></tr>
+<tr><td>¿Tú tenís plata para el pasaje?</td><td>Do you have money for the bus fare?</td></tr>
+<tr><td>Él tiene un gato súper mañoso.</td><td>He has a super fussy cat.</td></tr>
+<tr><td>Tenemos que estudiar para el examen de mañana.</td><td>We have to study for tomorrow’s test.</td></tr>
+<tr><td>Tienen hambre pero no quieren cocinar.</td><td>They’re hungry but don’t want to cook.</td></tr>
+<tr><td>Yo quiero tomarme una chela esta noche.</td><td>I want to have a beer tonight.</td></tr>
+<tr><td>¿Querís ir al parque un rato?</td><td>Do you want to go to the park for a bit?</td></tr>
+<tr><td>Ella quiere aprender a tocar guitarra.</td><td>She wants to learn to play guitar.</td></tr>
+<tr><td>Queremos hacer un asado el sábado.</td><td>We want to have a BBQ on Saturday.</td></tr>
+<tr><td>Quieren salir, pero no tienen permiso.</td><td>They want to go out, but they don’t have permission.</td></tr>
+<tr><td>Yo siempre digo la verdad.</td><td>I always tell the truth.</td></tr>
+<tr><td>¿Tú decís todo lo que pensás?</td><td>Do you say everything you think?</td></tr>
+<tr><td>Él dice que va a llegar temprano.</td><td>He says he’s going to arrive early.</td></tr>
+<tr><td>Decimos que sí, pero no estamos seguros.</td><td>We’re saying yes, but we’re not sure.</td></tr>
+<tr><td>Dicen que va a llover mañana.</td><td>They say it’s going to rain tomorrow.</td></tr>
+<tr><td>Estoy estudiando pal examen.</td><td>I’m studying for the exam.</td></tr>
+<tr><td>¿Tú estás esperando a alguien?</td><td>Are you waiting for someone?</td></tr>
+<tr><td>Ella está mirando su celular todo el rato.</td><td>She’s looking at her phone the whole time.</td></tr>
+<tr><td>Estamos cocinando algo rico.</td><td>We’re cooking something tasty.</td></tr>
+<tr><td>Están jugando FIFA en la pieza.</td><td>They’re playing FIFA in the room.</td></tr>
+<tr><td>¿Cómo estai hoy día?</td><td>How are you today?</td></tr>
+<tr><td>Estoy piola, gracias por preguntar.</td><td>I’m chill, thanks for asking.</td></tr>
+<tr><td>¿Tú eri el hermano de la Cami?</td><td>Are you Cami’s brother?</td></tr>
+<tr><td>No soy de acá, pero me gusta Santiago.</td><td>I’m not from here, but I like Santiago.</td></tr>
+<tr><td>¿Tú estuviste en la tocata del viernes?</td><td>Were you at the gig on Friday?</td></tr>
+<tr><td>Estuve enfermo todo el fin de semana.</td><td>I was sick all weekend.</td></tr>
+<tr><td>Ella estuvo en Viña todo enero.</td><td>She was in Viña all January.</td></tr>
+<tr><td>Estuvimos esperando más de una hora.</td><td>We were waiting for over an hour.</td></tr>
+<tr><td>Estuvieron en la casa de la Fran.</td><td>They were at Fran’s house.</td></tr>
+<tr><td>Yo era bien desordenado en el colegio.</td><td>I was really messy in school.</td></tr>
+<tr><td>¿Tú eras de Concepción o no?</td><td>Weren’t you from Concepción?</td></tr>
+<tr><td>Él era profe de inglés antes.</td><td>He used to be an English teacher.</td></tr>
+<tr><td>Éramos más cercanos antes.</td><td>We used to be closer before.</td></tr>
+<tr><td>Eran buenos tiempos, ¿cierto?</td><td>Those were good times, right?</td></tr>
+<tr><td>Voy a almorzar donde mi abuela.</td><td>I’m going to have lunch at my grandma’s place.</td></tr>
+<tr><td>¿Tú vas al gym todos los días?</td><td>Do you go to the gym every day?</td></tr>
+<tr><td>Ella va a la feria los miércoles.</td><td>She goes to the market on Wednesdays.</td></tr>
+<tr><td>Vamos a juntarnos en tu casa.</td><td>We’re going to meet at your place.</td></tr>
+<tr><td>Van a bailar cueca en la plaza.</td><td>They’re going to dance cueca in the square.</td></tr>
+<tr><td>Tengo que hacer la tarea.</td><td>I have to do the homework.</td></tr>
+<tr><td>¿Tenís la dirección de la fiesta?</td><td>Do you have the address for the party?</td></tr>
+<tr><td>Ella tiene clases hasta tarde.</td><td>She has classes until late.</td></tr>
+<tr><td>Tenemos ganas de salir a caminar.</td><td>We feel like going for a walk.</td></tr>
+<tr><td>Tienen muchas cosas que hacer.</td><td>They have a lot to do.</td></tr>
+<tr><td>Quiero comer algo rico.</td><td>I want to eat something tasty.</td></tr>
+<tr><td>¿Querís ver una peli?</td><td>Do you want to watch a movie?</td></tr>
+<tr><td>Ella quiere dormir una siesta.</td><td>She wants to take a nap.</td></tr>
+<tr><td>Queremos aprender a cocinar pastel de choclo.</td><td>We want to learn how to cook corn pie.</td></tr>
+<tr><td>Quieren ir a la playa mañana.</td><td>They want to go to the beach tomorrow.</td></tr>
+<tr><td>Digo la verdad, aunque duela.</td><td>I tell the truth, even if it hurts.</td></tr>
+<tr><td>¿Decís eso en serio?</td><td>Are you serious when you say that?</td></tr>
+<tr><td>Él dice que no puede venir hoy.</td><td>He says he can’t come today.</td></tr>
+<tr><td>Decimos muchas tonteras cuando tomamos.</td><td>We say a lot of nonsense when we drink.</td></tr>
+<tr><td>Dicen que va a hacer frío el finde.</td><td>They say it’s going to be cold this weekend.</td></tr>
+<tr><td>Estoy súper feliz con mi nuevo depto.</td><td>I’m super happy with my new apartment.</td></tr>
+<tr><td>¿Estás saliendo con alguien?</td><td>Are you dating someone?</td></tr>
+<tr><td>Ella está estudiando ingeniería.</td><td>She’s studying engineering.</td></tr>
+<tr><td>Estamos organizando un viaje al sur.</td><td>We’re organizing a trip to the south.</td></tr>
+<tr><td>Están jugando cartas en la terraza.</td><td>They’re playing cards on the patio.</td></tr>
+<tr><td>Fui a comprar pan a la esquina.</td><td>I went to buy bread at the corner store.</td></tr>
+<tr><td>¿Fuiste a la marcha del 8M?</td><td>Did you go to the Women’s Day march?</td></tr>
+<tr><td>Él fue muy generoso conmigo.</td><td>He was very generous with me.</td></tr>
+<tr><td>Fuimos felices en esa casa.</td><td>We were happy in that house.</td></tr>
+<tr><td>Fueron mis compañeros en la media.</td><td>They were my classmates in high school.</td></tr>
+<tr><td>Yo soy el hermano menor.</td><td>I’m the younger brother.</td></tr>
+<tr><td>¿Tú eres fan del Colo o la U?</td><td>Are you a Colo-Colo or Universidad de Chile fan?</td></tr>
+<tr><td>Él es hincha del Everton de Viña.</td><td>He’s a supporter of Everton from Viña.</td></tr>
+<tr><td>Somos fanáticos del fútbol.</td><td>We’re football fanatics.</td></tr>
+<tr><td>Son parte del grupo desde hace años.</td><td>They’ve been part of the group for years.</td></tr>
+<tr><td>Estoy chato de tanto trabajo.</td><td>I’m fed up with so much work.</td></tr>
+<tr><td>¿Estás ocupado ahora?</td><td>Are you busy right now?</td></tr>
+<tr><td>Ella está contenta con el resultado.</td><td>She’s happy with the result.</td></tr>
+<tr><td>Estamos medio perdidos, ¿cachai?</td><td>We’re kind of lost, you know?</td></tr>
+<tr><td>Están todos en la cocina comiendo.</td><td>They’re all in the kitchen eating.</td></tr>
+<tr><td>Voy saliendo, espérame cinco minutos.</td><td>I’m heading out, wait for me five minutes.</td></tr>
+<tr><td>¿Vas a ir al carrete de Nico?</td><td>Are you going to Nico’s party?</td></tr>
+<tr><td>Ella va a tomar once con su familia.</td><td>She’s going to have tea with her family.</td></tr>
+<tr><td>Vamos a ver una serie después de almorzar.</td><td>We’re going to watch a show after lunch.</td></tr>
+<tr><td>Van a venir varios amigos hoy día.</td><td>Several friends are coming today.</td></tr>
+<tr><td>Tengo pega hasta tarde hoy.</td><td>I’ve got work until late today.</td></tr>
+<tr><td>¿Tenís tiempo pa’ conversar un rato?</td><td>Do you have time to chat for a bit?</td></tr>
+<tr><td>Ella tiene una prueba mañana temprano.</td><td>She has a test early tomorrow.</td></tr>
+<tr><td>Tenemos hambre, ¿pedimos algo?</td><td>We’re hungry, should we order something?</td></tr>
+<tr><td>Tienen que estudiar si quieren pasar el ramo.</td><td>They have to study if they want to pass the class.</td></tr>
+<tr><td>Quiero dormir hasta tarde el domingo.</td><td>I want to sleep in on Sunday.</td></tr>
+<tr><td>¿Querís salir a caminar por el barrio?</td><td>Do you want to go for a walk around the neighborhood?</td></tr>
+<tr><td>Ella quiere cambiarse de carrera.</td><td>She wants to switch majors.</td></tr>
+<tr><td>Queremos probar ese local nuevo.</td><td>We want to try that new place.</td></tr>
+<tr><td>Quieren puro pasarlo bien.</td><td>They just want to have a good time.</td></tr>
+<tr><td>Yo digo lo que pienso sin filtro.</td><td>I say what I think without a filter.</td></tr>
+<tr><td>¿Tú decís la firme o estás leseando?</td><td>Are you being serious or just messing around?</td></tr>
+<tr><td>Él dice que no le importa, pero sí le afecta.</td><td>He says he doesn’t care, but it does affect him.</td></tr>
+<tr><td>Decimos una cosa y hacemos otra.</td><td>We say one thing and do another.</td></tr>
+<tr><td>Dicen que va a temblar esta semana.</td><td>They say it’s going to shake this week.</td></tr>
+<tr><td>Estoy pensando en tomarme un año sabático.</td><td>I’m thinking about taking a gap year.</td></tr>
+<tr><td>¿Estás listo para el viaje?</td><td>Are you ready for the trip?</td></tr>
+<tr><td>Ella está esperando una llamada importante.</td><td>She’s waiting for an important call.</td></tr>
+<tr><td>Estamos con harta pega esta semana.</td><td>We’ve got a lot of work this week.</td></tr>
+<tr><td>Están preparando un proyecto nuevo.</td><td>They’re preparing a new project.</td></tr>
+<tr><td>Yo fui scout cuando chico.</td><td>I was a scout when I was a kid.</td></tr>
+<tr><td>¿Tú fuiste al festival de Viña alguna vez?</td><td>Did you ever go to the Viña festival?</td></tr>
+<tr><td>Él fue súper buen compañero.</td><td>He was a really good classmate.</td></tr>
+<tr><td>Fuimos al zoológico con mi sobrino.</td><td>We went to the zoo with my nephew.</td></tr>
+<tr><td>Fueron muy solidarios con nosotros.</td><td>They were very supportive of us.</td></tr>
+<tr><td>Yo era bien porfiado cuando era chico.</td><td>I used to be really stubborn as a kid.</td></tr>
+<tr><td>¿Tú eras fan de Pokémon también?</td><td>Were you a Pokémon fan too?</td></tr>
+<tr><td>Ella era súper responsable en el colegio.</td><td>She was super responsible in school.</td></tr>
+<tr><td>Éramos tan distintos antes.</td><td>We were so different before.</td></tr>
+<tr><td>Eran tiempos difíciles, pero bonitos.</td><td>They were tough times, but beautiful.</td></tr>
+<tr><td>Voy a buscar algo pa' comer.</td><td>I’m going to look for something to eat.</td></tr>
+<tr><td>¿Vas a salir con la Cata hoy?</td><td>Are you going out with Cata today?</td></tr>
+<tr><td>Ella va a estudiar pedagogía.</td><td>She’s going to study education.</td></tr>
+<tr><td>Vamos a ver qué onda más tarde.</td><td>We’ll see what’s up later.</td></tr>
+<tr><td>Van a juntarse en la plaza de armas.</td><td>They’re meeting up at the main square.</td></tr>
+<tr><td>Yo soy medio flojo pa' levantarme temprano.</td><td>I’m kind of lazy about waking up early.</td></tr>
+<tr><td>¿Eres bueno pa' bailar?</td><td>Are you good at dancing?</td></tr>
+<tr><td>Él es fanático del reggaetón antiguo.</td><td>He’s a fan of old-school reggaetón.</td></tr>
+<tr><td>Somos todos distintos, y eso está bien.</td><td>We’re all different, and that’s okay.</td></tr>
+<tr><td>Son bien buena onda tus amigos.</td><td>Your friends are really cool.</td></tr>
+<tr><td>Estoy medio resfriado hoy día.</td><td>I’m a bit sick today.</td></tr>
+<tr><td>¿Estás tomando medicamentos?</td><td>Are you taking any medicine?</td></tr>
+<tr><td>Ella está saliendo con un loco súper simpático.</td><td>She’s dating a really nice guy.</td></tr>
+<tr><td>Estamos planificando las vacaciones.</td><td>We’re planning the vacation.</td></tr>
+<tr><td>Están todos esperando que empiece la película.</td><td>Everyone’s waiting for the movie to start.</td></tr>
+<tr><td>Voy a pasar al kiosko antes de clases.</td><td>I’m going to stop by the kiosk before class.</td></tr>
+<tr><td>¿Vas a ir al estadio el domingo?</td><td>Are you going to the stadium on Sunday?</td></tr>
+<tr><td>Ella va a presentar su proyecto mañana.</td><td>She’s going to present her project tomorrow.</td></tr>
+<tr><td>Vamos a celebrar el cumple de la Vale.</td><td>We’re going to celebrate Vale’s birthday.</td></tr>
+<tr><td>Van a pintar el departamento este finde.</td><td>They’re going to paint the apartment this weekend.</td></tr>
+<tr><td>Tengo ganas de quedarme en la casa hoy.</td><td>I feel like staying home today.</td></tr>
+<tr><td>¿Tenís tu carnet contigo?</td><td>Do you have your ID on you?</td></tr>
+<tr><td>Ella tiene muchos libros de poesía.</td><td>She has a lot of poetry books.</td></tr>
+<tr><td>Tenemos frío, vamos adentro.</td><td>We’re cold, let’s go inside.</td></tr>
+<tr><td>Tienen una perrita muy juguetona.</td><td>They have a very playful little dog.</td></tr>
+<tr><td>Quiero hacer algo distinto este finde.</td><td>I want to do something different this weekend.</td></tr>
+<tr><td>¿Querís acompañarme al banco?</td><td>Do you want to come with me to the bank?</td></tr>
+<tr><td>Ella quiere aprender a manejar.</td><td>She wants to learn how to drive.</td></tr>
+<tr><td>Queremos tomar desayuno juntos mañana.</td><td>We want to have breakfast together tomorrow.</td></tr>
+<tr><td>Quieren empezar a ahorrar más.</td><td>They want to start saving more.</td></tr>
+<tr><td>Digo que deberíamos intentarlo igual.</td><td>I say we should try anyway.</td></tr>
+<tr><td>¿Decís siempre lo que pensás?</td><td>Do you always say what you think?</td></tr>
+<tr><td>Él dice que le carga el frío.</td><td>He says he hates the cold.</td></tr>
+<tr><td>Decimos que sí, pero en verdad no queremos ir.</td><td>We say yes, but we actually don’t want to go.</td></tr>
+<tr><td>Dicen que ese lugar es rebueno.</td><td>They say that place is really good.</td></tr>
+<tr><td>Estoy tratando de comer más sano.</td><td>I’m trying to eat healthier.</td></tr>
+<tr><td>¿Estás viendo alguna serie buena?</td><td>Are you watching any good shows?</td></tr>
+<tr><td>Ella está trabajando en el centro ahora.</td><td>She’s working downtown now.</td></tr>
+<tr><td>Estamos esperando el micro en la esquina.</td><td>We’re waiting for the bus on the corner.</td></tr>
+<tr><td>Están preparando empanadas caseras.</td><td>They’re making homemade empanadas.</td></tr>
+<tr><td>Yo fui a ver a mis viejos el finde.</td><td>I went to see my parents over the weekend.</td></tr>
+<tr><td>¿Tú fuiste al cine con la Cami?</td><td>Did you go to the movies with Cami?</td></tr>
+<tr><td>Él fue muy valiente al contar eso.</td><td>He was very brave to share that.</td></tr>
+<tr><td>Fuimos a la cordillera a hacer trekking.</td><td>We went to the mountains to hike.</td></tr>
+<tr><td>Fueron muy atentos con nosotros.</td><td>They were very kind to us.</td></tr>
+<tr><td>Yo era súper desorganizado en la U.</td><td>I was super disorganized at uni.</td></tr>
+<tr><td>¿Tú eras el que tocaba guitarra en la banda?</td><td>Were you the one who played guitar in the band?</td></tr>
+<tr><td>Ella era tímida pero seca en ciencias.</td><td>She was shy but awesome at science.</td></tr>
+<tr><td>Éramos chicos cuando nos conocimos.</td><td>We were kids when we met.</td></tr>
+<tr><td>Eran los tiempos del fotolog, ¿te acordai?</td><td>Those were the Fotolog days, remember?</td></tr>
+<tr><td>Yo soy bueno pa' cocinar arroz con leche.</td><td>I’m good at making rice pudding.</td></tr>
+<tr><td>¿Eres de aquí o viniste de otra región?</td><td>Are you from here or did you come from another region?</td></tr>
+<tr><td>Él es seco arreglando cosas.</td><td>He’s great at fixing things.</td></tr>
+<tr><td>Somos súper unidos con mis primos.</td><td>My cousins and I are really close.</td></tr>
+<tr><td>Son buenos pa' contar historias chistosas.</td><td>They’re good at telling funny stories.</td></tr>
+<tr><td>Estoy tomando agüita con jengibre.</td><td>I’m drinking ginger water.</td></tr>
+<tr><td>¿Estás listo pa’ salir ya?</td><td>Are you ready to leave already?</td></tr>
+<tr><td>Ella está escuchando música todo el día.</td><td>She’s been listening to music all day.</td></tr>
+<tr><td>Estamos viendo si podemos ir a la playa.</td><td>We’re seeing if we can go to the beach.</td></tr>
+<tr><td>Están todos conectados en la videollamada.</td><td>They’re all connected in the video call.</td></tr>
+<tr><td>Voy a buscar mi chaqueta, espérame.</td><td>I’m going to get my jacket, wait for me.</td></tr>
+<tr><td>¿Vas a la tocata con el Seba?</td><td>Are you going to the concert with Seba?</td></tr>
+<tr><td>Ella va a postular a una beca en el extranjero.</td><td>She’s going to apply for a scholarship abroad.</td></tr>
+<tr><td>Vamos a comer algo y después salimos.</td><td>Let’s eat something and then we’ll go out.</td></tr>
+<tr><td>Van a hacer un picnic en el parque forestal.</td><td>They’re having a picnic in the Forest Park.</td></tr>
+<tr><td>Tengo ganas de ver una peli chilena.</td><td>I feel like watching a Chilean movie.</td></tr>
+<tr><td>¿Tenís tiempo pa' una chelita?</td><td>Do you have time for a beer?</td></tr>
+<tr><td>Ella tiene una voz súper linda.</td><td>She has a really nice voice.</td></tr>
+<tr><td>Tenemos planes pa'l finde largo.</td><td>We have plans for the long weekend.</td></tr>
+<tr><td>Tienen que mandar el informe hoy día.</td><td>They have to send the report today.</td></tr>
+<tr><td>Quiero aprender a bailar cueca.</td><td>I want to learn how to dance cueca.</td></tr>
+<tr><td>¿Querís pedir algo por Rappi?</td><td>Do you want to order something on Rappi?</td></tr>
+<tr><td>Ella quiere conocer el sur de Chile.</td><td>She wants to visit the south of Chile.</td></tr>
+<tr><td>Queremos ir a la playa con los cabros.</td><td>We want to go to the beach with the gang.</td></tr>
+<tr><td>Quieren puro salir a webear.</td><td>They just want to go out and mess around.</td></tr>
+<tr><td>Yo digo que deberíamos cocinar nosotros.</td><td>I say we should cook ourselves.</td></tr>
+<tr><td>¿Decís que vale la pena ir?</td><td>You think it’s worth going?</td></tr>
+<tr><td>Él dice que se va a cambiar de pega.</td><td>He says he’s going to change jobs.</td></tr>
+<tr><td>Decimos que llegamos a las ocho.</td><td>We’re saying we’ll arrive at eight.</td></tr>
+<tr><td>Dicen que la entrada está agotada.</td><td>They say the tickets are sold out.</td></tr>
+<tr><td>Estoy con frío, ¿cerramos la ventana?</td><td>I’m cold, should we close the window?</td></tr>
+<tr><td>¿Estás en la casa o en el centro?</td><td>Are you at home or downtown?</td></tr>
+<tr><td>Ella está siempre ayudando a todos.</td><td>She’s always helping everyone.</td></tr>
+<tr><td>Estamos terminando el semestre ya.</td><td>We’re finishing the semester already.</td></tr>
+<tr><td>Están haciendo pan amasado.</td><td>They’re making homemade bread.</td></tr>
+<tr><td>Yo fui a una fonda bacán el 18.</td><td>I went to a cool party on Independence Day.</td></tr>
+<tr><td>¿Tú fuiste parte del taller de teatro?</td><td>Were you part of the theater workshop?</td></tr>
+<tr><td>Él fue parte del voluntariado en Valpo.</td><td>He was part of the volunteer work in Valpo.</td></tr>
+<tr><td>Fuimos los primeros en llegar.</td><td>We were the first to arrive.</td></tr>
+<tr><td>Fueron muy pesados con ella.</td><td>They were really rude to her.</td></tr>
+<tr><td>Yo era bien tranquilo en la básica.</td><td>I was really quiet in primary school.</td></tr>
+<tr><td>¿Tú eras bueno pa'l dibujo?</td><td>Were you good at drawing?</td></tr>
+<tr><td>Ella era la mejor alumna del curso.</td><td>She was the best student in the class.</td></tr>
+<tr><td>Éramos amigos desde chicos.</td><td>We were friends since we were little.</td></tr>
+<tr><td>Eran otras épocas, po compadre.</td><td>Those were different times, bro.</td></tr>
+<tr><td>Yo soy hincha del Colo de corazón.</td><td>I’m a Colo-Colo fan at heart.</td></tr>
+<tr><td>¿Eres tú el que canta en la banda?</td><td>Are you the one who sings in the band?</td></tr>
+<tr><td>Él es bueno pa' los memes.</td><td>He’s good at making memes.</td></tr>
+<tr><td>Somos de Maipú, pero vivimos en Ñuñoa.</td><td>We’re from Maipú, but we live in Ñuñoa.</td></tr>
+<tr><td>Son cabros simpáticos los que llegaron.</td><td>The guys who arrived are nice.</td></tr>
+<tr><td>Estoy haciendo tareas con mi hermana chica.</td><td>I’m doing homework with my little sister.</td></tr>
+<tr><td>¿Estás en la fila todavía?</td><td>Are you still in line?</td></tr>
+<tr><td>Ella está de buen humor hoy día.</td><td>She’s in a good mood today.</td></tr>
+<tr><td>Estamos viendo qué comer para once.</td><td>We’re figuring out what to eat for tea.</td></tr>
+<tr><td>Están todos en la pieza jugando cartas.</td><td>They’re all in the room playing cards.</td></tr>
+<tr><td>Voy a terminar esto y te llamo.</td><td>I’m going to finish this and call you.</td></tr>
+<tr><td>¿Vas a llegar a la tocata?</td><td>Are you going to show up at the gig?</td></tr>
+<tr><td>Ella va a quedarse en casa este finde.</td><td>She’s staying home this weekend.</td></tr>
+<tr><td>Vamos a limpiar el patio entre todos.</td><td>We’re all going to clean the yard together.</td></tr>
+<tr><td>Van a estudiar toda la noche, dicen.</td><td>They say they’ll study all night.</td></tr>
+<tr><td>Yo tengo una caña terrible.</td><td>I have a terrible hangover.</td></tr>
+<tr><td>¿Tenís pan para el desayuno?</td><td>Do you have bread for breakfast?</td></tr>
+<tr><td>Ella tiene mucha paciencia con los niños.</td><td>She has a lot of patience with kids.</td></tr>
+<tr><td>Tenemos que apurarnos si no queremos llegar tarde.</td><td>We need to hurry if we don’t want to be late.</td></tr>
+<tr><td>Tienen el auto estacionado afuera.</td><td>They’ve got the car parked outside.</td></tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>
