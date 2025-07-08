@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Spanish Test</title>
+	<link href="styles.css" rel="stylesheet" type="text/css">
+
+<script>  
+
+	var shuffledNotes;
+	var currentNote;
+	var notes = [];
+
+	const THINK = 0;
+	const CHECK = 1;
+
+	var state = THINK;
+
+
+	function clickAnywhere()
+	{
+		console.log("click!");
+		if (state==THINK)
+		{
+			document.getElementById("content").innerHTML = "ANSWER:\n" + currentNote[1];
+			state = CHECK;
+		}
+		else if (state == CHECK)
+		{
+			showNewQuestion();
+			state = THINK;
+		}
+	}
+
+	function showNewQuestion()
+	{
+		if(shuffledNotes == undefined || shuffledNotes.length == 0)
+		{
+			shuffledNotes = [].concat(notes);
+			shuffle(shuffledNotes);
+			for(var i = 0; i < shuffledNotes.length; i++)
+			{
+				if(Math.random() > 0.5)
+				{
+					var note = shuffledNotes[i];
+					var temp = note[0];
+					note[0] = note[1];
+					note[1] = temp;
+				}
+			}
+		}
+
+		currentNote = shuffledNotes.pop();
+		document.getElementById("content").innerHTML = "QUESTION:\n" + currentNote[0];
+	}
+
+
+	function init()
+	{
+		document.body.addEventListener('click', clickAnywhere, true); 
+		var table = document.getElementById("sourceTable");
+		console.log(table);
+		for (var i = 0, row; row = table.rows[i]; i++) 
+		{
+			notes.push([row.cells[0].innerHTML, row.cells[1].innerHTML]);
+		}
+		showNewQuestion();
+	}
+
+		
+	
+
+	function shuffle(array) 
+	{
+	  let currentIndex = array.length;
+
+	  // While there remain elements to shuffle...
+	  while (currentIndex != 0) {
+
+	    // Pick a remaining element...
+	    let randomIndex = Math.floor(Math.random() * currentIndex);
+	    currentIndex--;
+
+	    // And swap it with the current element.
+	    [array[currentIndex], array[randomIndex]] = [
+	      array[randomIndex], array[currentIndex]];
+	  }
+	}
+</script>
+</head>
+
+<body onload="init();">
+
+<div id="content">
+
+</div>
+
+<table id = "sourceTable" style = "visibility: hidden;">
+    <tbody>
+        <tr>
+<td>Yo soy estudiante.</td>
+<td>I am a student.</td>
+</tr>
+<tr>
+<td>Tú eres amable.</td>
+<td>You are kind.</td>
+</tr>
+<tr>
+<td>Él es médico.</td>
+<td>He is a doctor.</td>
+</tr>
+<tr>
+<td>Ella es actriz.</td>
+<td>She is an actress.</td>
+</tr>
+<tr>
+<td>Nosotros somos amigos.</td>
+<td>We are friends.</td>
+</tr>
+<tr>
+<td>Vosotros sois estudiantes.</td>
+<td>You all are students.</td>
+</tr>
+<tr>
+<td>Ellos son músicos.</td>
+<td>They are musicians.</td>
+</tr>
+<tr>
+<td>Ellas son bailarinas.</td>
+<td>They are dancers.</td>
+</tr>
+<tr>
+<td>Usted es bienvenido.</td>
+<td>You are welcome.</td>
+</tr>
+<tr>
+<td>Ustedes son responsables.</td>
+<td>You all are responsible.</td>
+</tr>
+<tr>
+<td>Yo estoy cansado.</td>
+<td>I am tired.</td>
+</tr>
+<tr>
+<td>Tú estás aquí.</td>
+<td>You are here.</td>
+</tr>
+<tr>
+<td>Él está en casa.</td>
+<td>He is at home.</td>
+</tr>
+<tr>
+<td>Ella está feliz.</td>
+<td>She is happy.</td>
+</tr>
+<tr>
+<td>Nosotros estamos listos.</td>
+<td>We are ready.</td>
+</tr>
+<tr>
+<td>Vosotros estáis ocupados.</td>
+<td>You all are busy.</td>
+</tr>
+<tr>
+<td>Ellos están cansados.</td>
+<td>They are tired.</td>
+</tr>
+<tr>
+<td>Ellas están aquí.</td>
+<td>They are here.</td>
+</tr>
+<tr>
+<td>Usted está invitado.</td>
+<td>You are invited.</td>
+</tr>
+<tr>
+<td>Ustedes están presentes.</td>
+<td>You all are present.</td>
+</tr>
+<tr>
+<td>Yo tengo un perro.</td>
+<td>I have a dog.</td>
+</tr>
+<tr>
+<td>Tú tienes tiempo.</td>
+<td>You have time.</td>
+</tr>
+<tr>
+<td>Él tiene suerte.</td>
+<td>He is lucky.</td>
+</tr>
+<tr>
+<td>Ella tiene frío.</td>
+<td>She is cold.</td>
+</tr>
+<tr>
+<td>Nosotros tenemos calor.</td>
+<td>We are hot.</td>
+</tr>
+<tr>
+<td>Vosotros tenéis razón.</td>
+<td>You all are right.</td>
+</tr>
+<tr>
+<td>Ellos tienen coches.</td>
+<td>They have cars.</td>
+</tr>
+<tr>
+<td>Ellas tienen libros.</td>
+<td>They have books.</td>
+</tr>
+<tr>
+<td>Usted tiene razón.</td>
+<td>You are right.</td>
+</tr>
+<tr>
+<td>Ustedes tienen preguntas.</td>
+<td>You all have questions.</td>
+</tr>
+<tr>
+<td>Yo hablo español.</td>
+<td>I speak Spanish.</td>
+</tr>
+<tr>
+<td>Tú hablas rápido.</td>
+<td>You speak fast.</td>
+</tr>
+<tr>
+<td>Él habla mucho.</td>
+<td>He speaks a lot.</td>
+</tr>
+<tr>
+<td>Ella habla inglés.</td>
+<td>She speaks English.</td>
+</tr>
+<tr>
+<td>Nosotros hablamos español.</td>
+<td>We speak Spanish.</td>
+</tr>
+<tr>
+<td>Vosotros habláis bien.</td>
+<td>You all speak well.</td>
+</tr>
+<tr>
+<td>Ellos hablan alto.</td>
+<td>They speak loudly.</td>
+</tr>
+<tr>
+<td>Ellas hablan despacio.</td>
+<td>They speak slowly.</td>
+</tr>
+<tr>
+<td>Usted habla formalmente.</td>
+<td>You speak formally.</td>
+</tr>
+<tr>
+<td>Ustedes hablan claramente.</td>
+<td>You all speak clearly.</td>
+</tr>
+<tr>
+<td>Yo fui profesor.</td>
+<td>I was a teacher.</td>
+</tr>
+<tr>
+<td>Tú fuiste valiente.</td>
+<td>You were brave.</td>
+</tr>
+<tr>
+<td>Él fue famoso.</td>
+<td>He was famous.</td>
+</tr>
+<tr>
+<td>Ella fue ingeniera.</td>
+<td>She was an engineer.</td>
+</tr>
+<tr>
+<td>Nosotros fuimos al cine.</td>
+<td>We went to the movies.</td>
+</tr>
+<tr>
+<td>Vosotros fuisteis rápidos.</td>
+<td>You all were fast.</td>
+</tr>
+<tr>
+<td>Ellos fueron estudiantes.</td>
+<td>They were students.</td>
+</tr>
+<tr>
+<td>Ellas fueron amigas.</td>
+<td>They were friends.</td>
+</tr>
+<tr>
+<td>Usted fue generoso.</td>
+<td>You were generous.</td>
+</tr>
+<tr>
+<td>Ustedes fueron invitados.</td>
+<td>You all were invited.</td>
+</tr>
+<tr>
+<td>Yo estaba feliz.</td>
+<td>I was happy.</td>
+</tr>
+<tr>
+<td>Tú estabas enfermo.</td>
+<td>You were sick.</td>
+</tr>
+<tr>
+<td>Él estaba ocupado.</td>
+<td>He was busy.</td>
+</tr>
+<tr>
+<td>Ella estaba triste.</td>
+<td>She was sad.</td>
+</tr>
+<tr>
+<td>Nosotros estábamos cansados.</td>
+<td>We were tired.</td>
+</tr>
+<tr>
+<td>Vosotros estabais nerviosos.</td>
+<td>You all were nervous.</td>
+</tr>
+<tr>
+<td>Ellos estaban felices.</td>
+<td>They were happy.</td>
+</tr>
+<tr>
+<td>Ellas estaban listas.</td>
+<td>They were ready.</td>
+</tr>
+<tr>
+<td>Usted estaba ocupado.</td>
+<td>You were busy.</td>
+</tr>
+<tr>
+<td>Ustedes estaban confundidos.</td>
+<td>You all were confused.</td>
+</tr>
+<tr>
+<td>Yo seré famoso.</td>
+<td>I will be famous.</td>
+</tr>
+<tr>
+<td>Tú serás rico.</td>
+<td>You will be rich.</td>
+</tr>
+<tr>
+<td>Él será líder.</td>
+<td>He will be a leader.</td>
+</tr>
+<tr>
+<td>Ella será madre.</td>
+<td>She will be a mother.</td>
+</tr>
+<tr>
+<td>Nosotros seremos felices.</td>
+<td>We will be happy.</td>
+</tr>
+<tr>
+<td>Vosotros seréis campeones.</td>
+<td>You all will be champions.</td>
+</tr>
+<tr>
+<td>Ellos serán ricos.</td>
+<td>They will be rich.</td>
+</tr>
+<tr>
+<td>Ellas serán exitosas.</td>
+<td>They will be successful.</td>
+</tr>
+<tr>
+<td>Usted será recordado.</td>
+<td>You will be remembered.</td>
+</tr>
+<tr>
+<td>Ustedes serán bienvenidos.</td>
+<td>You all will be welcome.</td>
+</tr>
+<tr>
+<td>Yo he sido paciente.</td>
+<td>I have been patient.</td>
+</tr>
+<tr>
+<td>Tú has sido útil.</td>
+<td>You have been helpful.</td>
+</tr>
+<tr>
+<td>Él ha sido fuerte.</td>
+<td>He has been strong.</td>
+</tr>
+<tr>
+<td>Ella ha sido valiente.</td>
+<td>She has been brave.</td>
+</tr>
+<tr>
+<td>Nosotros hemos sido sinceros.</td>
+<td>We have been honest.</td>
+</tr>
+<tr>
+<td>Vosotros habéis sido generosos.</td>
+<td>You all have been generous.</td>
+</tr>
+<tr>
+<td>Ellos han sido buenos.</td>
+<td>They have been good.</td>
+</tr>
+<tr>
+<td>Ellas han sido amables.</td>
+<td>They have been kind.</td>
+</tr>
+<tr>
+<td>Usted ha sido importante.</td>
+<td>You have been important.</td>
+</tr>
+<tr>
+<td>Ustedes han sido útiles.</td>
+<td>You all have been helpful.</td>
+</tr>
+<tr>
+<td>Yo quiero comer.</td>
+<td>I want to eat.</td>
+</tr>
+<tr>
+<td>Tú quieres descansar.</td>
+<td>You want to rest.</td>
+</tr>
+<tr>
+<td>Él quiere aprender.</td>
+<td>He wants to learn.</td>
+</tr>
+<tr>
+<td>Ella quiere viajar.</td>
+<td>She wants to travel.</td>
+</tr>
+<tr>
+<td>Nosotros queremos ayudar.</td>
+<td>We want to help.</td>
+</tr>
+<tr>
+<td>Vosotros queréis salir.</td>
+<td>You all want to go out.</td>
+</tr>
+<tr>
+<td>Ellos quieren ganar.</td>
+<td>They want to win.</td>
+</tr>
+<tr>
+<td>Ellas quieren bailar.</td>
+<td>They want to dance.</td>
+</tr>
+<tr>
+<td>Usted quiere participar.</td>
+<td>You want to participate.</td>
+</tr>
+<tr>
+<td>Ustedes quieren mejorar.</td>
+<td>You all want to improve.</td>
+</tr>
+<tr>
+<td>Yo veo el sol.</td>
+<td>I see the sun.</td>
+</tr>
+<tr>
+<td>Tú ves la luna.</td>
+<td>You see the moon.</td>
+</tr>
+<tr>
+<td>Él ve la casa.</td>
+<td>He sees the house.</td>
+</tr>
+<tr>
+<td>Ella ve el coche.</td>
+<td>She sees the car.</td>
+</tr>
+<tr>
+<td>Nosotros vemos el río.</td>
+<td>We see the river.</td>
+</tr>
+<tr>
+<td>Vosotros veis la playa.</td>
+<td>You all see the beach.</td>
+</tr>
+<tr>
+<td>Ellos ven la montaña.</td>
+<td>They see the mountain.</td>
+</tr>
+<tr>
+<td>Ellas ven el cielo.</td>
+<td>They see the sky.</td>
+</tr>
+<tr>
+<td>Usted ve la ciudad.</td>
+<td>You see the city.</td>
+</tr>
+<tr>
+<td>Ustedes ven el mar.</td>
+<td>You all see the sea.</td>
+</tr>
+<tr>
+<td>Yo comí una manzana.</td>
+<td>I ate an apple.</td>
+</tr>
+<tr>
+<td>Tú comiste temprano.</td>
+<td>You ate early.</td>
+</tr>
+<tr>
+<td>Él comió demasiado.</td>
+<td>He ate too much.</td>
+</tr>
+<tr>
+<td>Ella comió en casa.</td>
+<td>She ate at home.</td>
+</tr>
+<tr>
+<td>Nosotros comimos juntos.</td>
+<td>We ate together.</td>
+</tr>
+<tr>
+<td>Vosotros comisteis arroz.</td>
+<td>You all ate rice.</td>
+</tr>
+<tr>
+<td>Ellos comieron carne.</td>
+<td>They ate meat.</td>
+</tr>
+<tr>
+<td>Ellas comieron pasta.</td>
+<td>They ate pasta.</td>
+</tr>
+<tr>
+<td>Usted comió solo.</td>
+<td>You ate alone.</td>
+</tr>
+<tr>
+<td>Ustedes comieron tarde.</td>
+<td>You all ate late.</td>
+</tr>
+<tr>
+<td>Yo vivo en Madrid.</td>
+<td>I live in Madrid.</td>
+</tr>
+<tr>
+<td>Tú vives con tus padres.</td>
+<td>You live with your parents.</td>
+</tr>
+<tr>
+<td>Él vive solo.</td>
+<td>He lives alone.</td>
+</tr>
+<tr>
+<td>Ella vive en un piso.</td>
+<td>She lives in an apartment.</td>
+</tr>
+<tr>
+<td>Nosotros vivimos cerca.</td>
+<td>We live nearby.</td>
+</tr>
+<tr>
+<td>Vosotros vivís lejos.</td>
+<td>You all live far away.</td>
+</tr>
+<tr>
+<td>Ellos viven en el campo.</td>
+<td>They live in the countryside.</td>
+</tr>
+<tr>
+<td>Ellas viven en la ciudad.</td>
+<td>They live in the city.</td>
+</tr>
+<tr>
+<td>Usted vive bien.</td>
+<td>You live well.</td>
+</tr>
+<tr>
+<td>Ustedes viven juntos.</td>
+<td>You all live together.</td>
+</tr>
+<tr>
+<td>Yo escribo cartas.</td>
+<td>I write letters.</td>
+</tr>
+<tr>
+<td>Tú escribes poesía.</td>
+<td>You write poetry.</td>
+</tr>
+<tr>
+<td>Él escribe libros.</td>
+<td>He writes books.</td>
+</tr>
+<tr>
+<td>Ella escribe rápido.</td>
+<td>She writes fast.</td>
+</tr>
+<tr>
+<td>Nosotros escribimos mucho.</td>
+<td>We write a lot.</td>
+</tr>
+<tr>
+<td>Vosotros escribís mal.</td>
+<td>You all write poorly.</td>
+</tr>
+<tr>
+<td>Ellos escriben artículos.</td>
+<td>They write articles.</td>
+</tr>
+<tr>
+<td>Ellas escriben cuentos.</td>
+<td>They write stories.</td>
+</tr>
+<tr>
+<td>Usted escribe bien.</td>
+<td>You write well.</td>
+</tr>
+<tr>
+<td>Ustedes escriben correos.</td>
+<td>You all write emails.</td>
+</tr>
+<tr>
+<td>Yo salgo ahora.</td>
+<td>I’m leaving now.</td>
+</tr>
+<tr>
+<td>Tú sales pronto.</td>
+<td>You leave soon.</td>
+</tr>
+<tr>
+<td>Él sale cada día.</td>
+<td>He leaves every day.</td>
+</tr>
+<tr>
+<td>Ella sale a las ocho.</td>
+<td>She leaves at eight.</td>
+</tr>
+<tr>
+<td>Nosotros salimos juntos.</td>
+<td>We leave together.</td>
+</tr>
+<tr>
+<td>Vosotros salís tarde.</td>
+<td>You all leave late.</td>
+</tr>
+<tr>
+<td>Ellos salen del trabajo.</td>
+<td>They leave work.</td>
+</tr>
+<tr>
+<td>Ellas salen de clase.</td>
+<td>They leave class.</td>
+</tr>
+<tr>
+<td>Usted sale temprano.</td>
+<td>You leave early.</td>
+</tr>
+<tr>
+<td>Ustedes salen en grupo.</td>
+<td>You all leave as a group.</td>
+</tr>
+<tr>
+<td>Yo duermo bien.</td>
+<td>I sleep well.</td>
+</tr>
+<tr>
+<td>Tú duermes poco.</td>
+<td>You sleep little.</td>
+</tr>
+<tr>
+<td>Él duerme mal.</td>
+<td>He sleeps badly.</td>
+</tr>
+<tr>
+<td>Ella duerme ocho horas.</td>
+<td>She sleeps eight hours.</td>
+</tr>
+<tr>
+<td>Nosotros dormimos juntos.</td>
+<td>We sleep together.</td>
+</tr>
+<tr>
+<td>Vosotros dormís mucho.</td>
+<td>You all sleep a lot.</td>
+</tr>
+<tr>
+<td>Ellos duermen profundamente.</td>
+<td>They sleep deeply.</td>
+</tr>
+<tr>
+<td>Ellas duermen tarde.</td>
+<td>They sleep late.</td>
+</tr>
+<tr>
+<td>Usted duerme tranquilo.</td>
+<td>You sleep peacefully.</td>
+</tr>
+<tr>
+<td>Ustedes duermen en silencio.</td>
+<td>You all sleep in silence.</td>
+</tr>
+<tr>
+<td>Yo estudio español.</td>
+<td>I study Spanish.</td>
+</tr>
+<tr>
+<td>Tú estudias medicina.</td>
+<td>You study medicine.</td>
+</tr>
+<tr>
+<td>Él estudia historia.</td>
+<td>He studies history.</td>
+</tr>
+<tr>
+<td>Ella estudia arte.</td>
+<td>She studies art.</td>
+</tr>
+<tr>
+<td>Nosotros estudiamos juntos.</td>
+<td>We study together.</td>
+</tr>
+<tr>
+<td>Vosotros estudiáis bien.</td>
+<td>You all study well.</td>
+</tr>
+<tr>
+<td>Ellos estudian ingeniería.</td>
+<td>They study engineering.</td>
+</tr>
+<tr>
+<td>Ellas estudian biología.</td>
+<td>They study biology.</td>
+</tr>
+<tr>
+<td>Usted estudia mucho.</td>
+<td>You study a lot.</td>
+</tr>
+<tr>
+<td>Ustedes estudian aquí.</td>
+<td>You all study here.</td>
+</tr>
+<tr>
+<td>Yo camino cada día.</td>
+<td>I walk every day.</td>
+</tr>
+<tr>
+<td>Tú caminas rápido.</td>
+<td>You walk fast.</td>
+</tr>
+<tr>
+<td>Él camina al parque.</td>
+<td>He walks to the park.</td>
+</tr>
+<tr>
+<td>Ella camina sola.</td>
+<td>She walks alone.</td>
+</tr>
+<tr>
+<td>Nosotros caminamos mucho.</td>
+<td>We walk a lot.</td>
+</tr>
+<tr>
+<td>Vosotros camináis por la ciudad.</td>
+<td>You all walk through the city.</td>
+</tr>
+<tr>
+<td>Ellos caminan despacio.</td>
+<td>They walk slowly.</td>
+</tr>
+<tr>
+<td>Ellas caminan juntas.</td>
+<td>They walk together.</td>
+</tr>
+<tr>
+<td>Usted camina bien.</td>
+<td>You walk well.</td>
+</tr>
+<tr>
+<td>Ustedes caminan todos los días.</td>
+<td>You all walk every day.</td>
+</tr>
+<tr>
+<td>Yo trabajo mucho.</td>
+<td>I work a lot.</td>
+</tr>
+<tr>
+<td>Tú trabajas en casa.</td>
+<td>You work at home.</td>
+</tr>
+<tr>
+<td>Él trabaja en una tienda.</td>
+<td>He works in a store.</td>
+</tr>
+<tr>
+<td>Ella trabaja en una oficina.</td>
+<td>She works in an office.</td>
+</tr>
+<tr>
+<td>Nosotros trabajamos juntos.</td>
+<td>We work together.</td>
+</tr>
+<tr>
+<td>Vosotros trabajáis los lunes.</td>
+<td>You all work on Mondays.</td>
+</tr>
+<tr>
+<td>Ellos trabajan de noche.</td>
+<td>They work at night.</td>
+</tr>
+<tr>
+<td>Ellas trabajan los fines de semana.</td>
+<td>They work on weekends.</td>
+</tr>
+<tr>
+<td>Usted trabaja demasiado.</td>
+<td>You work too much.</td>
+</tr>
+<tr>
+<td>Ustedes trabajan bien.</td>
+<td>You all work well.</td>
+</tr>
+<tr>
+<td>Yo juego fútbol.</td>
+<td>I play soccer.</td>
+</tr>
+<tr>
+<td>Tú juegas muy bien.</td>
+<td>You play very well.</td>
+</tr>
+<tr>
+<td>Él juega con su hermano.</td>
+<td>He plays with his brother.</td>
+</tr>
+<tr>
+<td>Ella juega en el parque.</td>
+<td>She plays in the park.</td>
+</tr>
+<tr>
+<td>Nosotros jugamos los sábados.</td>
+<td>We play on Saturdays.</td>
+</tr>
+<tr>
+<td>Vosotros jugáis juntos.</td>
+<td>You all play together.</td>
+</tr>
+<tr>
+<td>Ellos juegan videojuegos.</td>
+<td>They play video games.</td>
+</tr>
+<tr>
+<td>Ellas juegan voleibol.</td>
+<td>They play volleyball.</td>
+</tr>
+<tr>
+<td>Usted juega con los niños.</td>
+<td>You play with the children.</td>
+</tr>
+<tr>
+<td>Ustedes juegan en equipo.</td>
+<td>You all play as a team.</td>
+</tr>
+<tr>
+<td>Yo canto en casa.</td>
+<td>I sing at home.</td>
+</tr>
+<tr>
+<td>Tú cantas muy bien.</td>
+<td>You sing very well.</td>
+</tr>
+<tr>
+<td>Él canta canciones tristes.</td>
+<td>He sings sad songs.</td>
+</tr>
+<tr>
+<td>Ella canta en el coro.</td>
+<td>She sings in the choir.</td>
+</tr>
+<tr>
+<td>Nosotros cantamos juntos.</td>
+<td>We sing together.</td>
+</tr>
+<tr>
+<td>Vosotros cantáis fuerte.</td>
+<td>You all sing loudly.</td>
+</tr>
+<tr>
+<td>Ellos cantan en la fiesta.</td>
+<td>They sing at the party.</td>
+</tr>
+<tr>
+<td>Ellas cantan muy bien.</td>
+<td>They sing very well.</td>
+</tr>
+<tr>
+<td>Usted canta solo.</td>
+<td>You sing alone.</td>
+</tr>
+<tr>
+<td>Ustedes cantan con alegría.</td>
+<td>You all sing with joy.</td>
+</tr>
+<tr>
+<td>Yo leo cada noche.</td>
+<td>I read every night.</td>
+</tr>
+<tr>
+<td>Tú lees rápido.</td>
+<td>You read fast.</td>
+</tr>
+<tr>
+<td>Él lee novelas.</td>
+<td>He reads novels.</td>
+</tr>
+<tr>
+<td>Ella lee poesía.</td>
+<td>She reads poetry.</td>
+</tr>
+<tr>
+<td>Nosotros leemos mucho.</td>
+<td>We read a lot.</td>
+</tr>
+<tr>
+<td>Vosotros leéis libros antiguos.</td>
+<td>You all read old books.</td>
+</tr>
+<tr>
+<td>Ellos leen periódicos.</td>
+<td>They read newspapers.</td>
+</tr>
+<tr>
+<td>Ellas leen revistas.</td>
+<td>They read magazines.</td>
+</tr>
+<tr>
+<td>Usted lee en voz alta.</td>
+<td>You read aloud.</td>
+</tr>
+<tr>
+<td>Ustedes leen juntos.</td>
+<td>You all read together.</td>
+</tr>
+<tr>
+<td>Yo bebo agua.</td>
+<td>I drink water.</td>
+</tr>
+<tr>
+<td>Tú bebes jugo.</td>
+<td>You drink juice.</td>
+</tr>
+<tr>
+<td>Él bebe café.</td>
+<td>He drinks coffee.</td>
+</tr>
+<tr>
+<td>Ella bebe té.</td>
+<td>She drinks tea.</td>
+</tr>
+<tr>
+<td>Nosotros bebemos leche.</td>
+<td>We drink milk.</td>
+</tr>
+<tr>
+<td>Vosotros bebéis refrescos.</td>
+<td>You all drink soft drinks.</td>
+</tr>
+<tr>
+<td>Ellos beben cerveza.</td>
+<td>They drink beer.</td>
+</tr>
+<tr>
+<td>Ellas beben vino.</td>
+<td>They drink wine.</td>
+</tr>
+<tr>
+<td>Usted bebe lentamente.</td>
+<td>You drink slowly.</td>
+</tr>
+<tr>
+<td>Ustedes beben juntos.</td>
+<td>You all drink together.</td>
+</tr>
+<tr>
+<td>Yo abro la puerta.</td>
+<td>I open the door.</td>
+</tr>
+<tr>
+<td>Tú abres la ventana.</td>
+<td>You open the window.</td>
+</tr>
+<tr>
+<td>Él abre el regalo.</td>
+<td>He opens the gift.</td>
+</tr>
+<tr>
+<td>Ella abre su libro.</td>
+<td>She opens her book.</td>
+</tr>
+<tr>
+<td>Nosotros abrimos la tienda.</td>
+<td>We open the store.</td>
+</tr>
+<tr>
+<td>Vosotros abrís el archivo.</td>
+<td>You all open the file.</td>
+</tr>
+<tr>
+<td>Ellos abren la caja.</td>
+<td>They open the box.</td>
+</tr>
+<tr>
+<td>Ellas abren la puerta.</td>
+<td>They open the door.</td>
+</tr>
+<tr>
+<td>Usted abre el correo.</td>
+<td>You open the mail.</td>
+</tr>
+<tr>
+<td>Ustedes abren el documento.</td>
+<td>You all open the document.</td>
+</tr>
+<tr>
+<td>Yo cierro la puerta.</td>
+<td>I close the door.</td>
+</tr>
+<tr>
+<td>Tú cierras el libro.</td>
+<td>You close the book.</td>
+</tr>
+<tr>
+<td>Él cierra la ventana.</td>
+<td>He closes the window.</td>
+</tr>
+<tr>
+<td>Ella cierra la tienda.</td>
+<td>She closes the store.</td>
+</tr>
+<tr>
+<td>Nosotros cerramos tarde.</td>
+<td>We close late.</td>
+</tr>
+<tr>
+<td>Vosotros cerráis la sesión.</td>
+<td>You all close the session.</td>
+</tr>
+<tr>
+<td>Ellos cierran el trato.</td>
+<td>They close the deal.</td>
+</tr>
+<tr>
+<td>Ellas cierran sus ojos.</td>
+<td>They close their eyes.</td>
+</tr>
+<tr>
+<td>Usted cierra con cuidado.</td>
+<td>You close carefully.</td>
+</tr>
+<tr>
+<td>Ustedes cierran la reunión.</td>
+<td>You all close the meeting.</td>
+</tr>
+
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>
