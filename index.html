@@ -22,19 +22,19 @@
 
 
 	function clickAnywhere()
-	{
-		console.log("click!");
-		if (state==THINK)
-		{
-			document.getElementById("content").innerHTML = "ANSWER:\n" + currentNote[1];
-			state = CHECK;
-		}
-		else if (state == CHECK)
-		{
-			showNewQuestion();
-			state = THINK;
-		}
-	}
+    {
+        console.log("click!");
+        if (state==THINK)
+        {
+            document.getElementById("content").innerHTML = "QUESTION:<br/>" + currentNote[0] + "<br/><br/>ANSWER:<br/>" + currentNote[1];
+            state = CHECK;
+        }
+        else if (state == CHECK)
+        {
+            showNewQuestion();
+            state = THINK;
+        }
+    }
 
 	function showNewQuestion()
 	{
@@ -55,7 +55,7 @@
 		}
 
 		currentNote = shuffledNotes.pop();
-		document.getElementById("content").innerHTML = "QUESTION:\n" + currentNote[0];
+		document.getElementById("content").innerHTML = "QUESTION:<br/>" + currentNote[0];
 	}
 
 
