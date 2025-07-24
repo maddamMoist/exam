@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>NPE Revision</title>
+	<link href="styles.css" rel="stylesheet" type="text/css">
+
+<script>
+
+    
+
+  
+
+    var shuffledNotes;
+    var currentNote;
+    var notes = [];
+
+    const THINK = 0;
+    const CHECK = 1;
+
+    var state = THINK;
+
+
+    function clickAnywhere()
+    {
+        console.log("click!");
+        if (state==THINK)
+        {
+            document.getElementById("content").innerHTML = "QUESTION:<br/>" + currentNote[0] + "<br/><br/>ANSWER:<br/>" + currentNote[1];
+            state = CHECK;
+        }
+        else if (state == CHECK)
+        {
+            showNewQuestion();
+            state = THINK;
+        }
+    }
+
+    function showNewQuestion()
+    {
+        if(shuffledNotes == undefined || shuffledNotes.length == 0)
+        {
+            shuffledNotes = [].concat(notes);
+            shuffle(shuffledNotes);
+            for(var i = 0; i < shuffledNotes.length; i++)
+            {
+                if(Math.random() > 0.5)
+                {
+                    var note = shuffledNotes[i];
+                    var temp = note[0];
+                    note[0] = note[1];
+                    note[1] = temp;
+                }
+            }
+        }
+
+        currentNote = shuffledNotes.pop();
+        document.getElementById("content").innerHTML = "QUESTION:<br/>" + currentNote[0];
+    }
+
+
+    function init()
+    {
+        document.body.addEventListener('click', clickAnywhere, true); 
+        var table = document.getElementById("sourceTable");
+        
+        for (var i = 0, row; row = table.rows[i]; i++) 
+        {
+            notes.push([row.cells[0].innerHTML, row.cells[1].innerHTML]);
+        }
+        showNewQuestion();
+    }
+
+        
+    
+
+    function shuffle(array) 
+    {
+      let currentIndex = array.length;
+
+      // While there remain elements to shuffle...
+      while (currentIndex != 0) {
+
+        // Pick a remaining element...
+        let randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex], array[currentIndex]];
+      }
+    }
+</script>
+</head>
+
+<body onload="init();">
+
+<div id="content">
+
+</div>
+
+<table id = "sourceTable" style = "visibility: hidden;">
+    <tbody>
+        <tr>
+            <td>
+                <p>the WAIS-IV has 15 subtests (10 core = FSIQ). what are the 4 index scores and 2 broad scores?</p>
+            </td>
+            <td>
+                <p>An Intelligence scale (16-90 age range) with the following index scales:</p>
+                <p>Verbal Comprehension</p>
+                    <p>Perceptual Reasoning</p>
+                    <p>Working Memory</p>
+                    <p>Processing Speed</p>
+                    <br/>
+                    <p>and the following broad scores:</p>
+                    <p>FSIQ</p>
+                    <p>general ability index(GAI)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>The general ability index in the WAIS-IV is intended to represent cognitive ability with less influence from which two areas?</p>
+            </td>
+            <td>
+                <p>Which index of the WAIS-IV is intended to be broad but with less influence from working memory and processing speed?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>WISC-V has 16 subtests (10 primary = FSIQ). What are the primary index scales?</p>
+            </td>
+            <td>
+                <p>An intelligence test for children with the following Primary index scales. How many subtests does it have?:</p>
+                <p>Verbal Comprehension (VC)</p>
+                <p>Visual Spatial (VS)</p>
+                <p>Fluid Reasoning (FR)</p>
+                <p>Working Memory (WM)</p> 
+                <p>Processing Speed (PS)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>PAI has how many items and subscales?</p>
+            </td>
+            <td>
+                <p>18+</p>
+                <p>Personality test.</p>
+                <p>344 items. 22 scales.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What are the 4 subscale categories of the PAI?</p>
+            </td>
+            <td>
+                <p>A test with 22 subscales grouped into the following categories:
+                </p>
+                <p>validity</p>
+                <p>clinical</p>
+                <p>treatment consideration</p>
+                <p>interpersonal scales</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>DASS details</p>
+            </td>
+            <td>
+                <p>42 or 21 items. 3 scales.</p>
+                <p>Depression anxiety and stress.</p>
+                <p>Not a diagnostic measure.</p>
+                <p>Mainly for adults</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>DASS depression severity ranges</p>
+            </td>
+            <td>
+                <p>Normal: 0-9</p>
+                <p>Mild: 10-13</p>
+                <p>Moderate: 14-20</p>
+                <p>Severe: 21-27</p>
+                <p>Extremely Severe: 28+</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>DASS anxiety severity ranges</p>
+            </td>
+            <td>
+                <p>Normal: 0-7</p>
+                <p>Mild: 8-9</p>
+                <p>Moderate: 10-14</p>
+                <p>Severe: 15-19</p>
+                <p>Extremely Severe: 20+</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>DASS stress severity ranges</p>
+            </td>
+            <td>
+                <p>Normal: 0-14</p>
+                <p>Mild: 15-18</p>
+                <p>Moderate: 19-25</p>
+                <p>Severe: 26-33</p>
+                <p>Extremely Severe: 34+</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What is the max score of the K10 (Kessler)?</p>
+            </td>
+            <td>
+                <p>10-item measure of psychological distress. Screen for mental disorders in primary care settings. Max (most distress) score is 50.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>SDQ (strengths and difficulties questionnaire) is for for children and adolescents (4-17). Where and why is it used? and how many items and subscales does it have?</p>
+            </td>
+            <td>
+                <p>An emotional and behavioural problems screening questionnaire used in initial assessment. It has 25 items and 5 subscales. What is the age range?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Below are 2 of the SDQ subscales, what are the remaining 3?</p>
+                <p>Conduct problems</p>
+                <p>Peer problems</p>
+            </td>
+            <td>
+                <p>Below are 3 of the SDQ subscales, what are the remaining 2?</p>
+                <p>Hyperactivity</p>
+                <p>Emotional problems</p>
+                <p>Prosocial behaviour</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>WPPSI-IV</p>
+            </td>
+            <td>
+                <p>Scale to assess intelligence of preschool and early primary school children</p>
+                <p>Similar to WISC and WAIS. 15 subtests. VCI. VSI. FRI. WMI. PSI.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Stanford-Binet Intelligence Scales (SB5)</p>
+            </td>
+            <td>
+                <p>IQ test for all ages (2-85+). A revision of an early test for children.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Kaufman Adolescent and Adult intelligence Test (KAIT)</p>
+            </td>
+            <td>
+                <p>Intelligence test for adolescents and adults (11-85+). Includes composite IQ and crystalised (Gc) and fluid (Gf) IQ scores</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Weschler Abbreviated Scale of Intelligence (WASI)</p>
+            </td>
+            <td>
+                <p>Brief intelligence test (ages 6-91) for when a comprehensive test is unnecessary, or as a screener, or for re-testing</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Woodcock Johnson III Tests of Cognitive Abilities (WJ-III COG)</p>
+            </td>
+            <td>
+                <p>Test of cognitive abilities (ages 2-90). Long-standing, based on Catell-Horn-Carroll theory of cognitive abilities</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>WIAT-II</p>
+            </td>
+            <td>
+                <p>Academic achievement test for all ages (4-85). 9 subtests. 4 composites: reading, maths, written language, oral language</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>ABAS-3</p>
+            </td>
+            <td>
+                <p>Adaptive behaviour assessment system. Different forms for children, adults, parents and teachers.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Domains of the ABAS-3</p>
+            </td>
+            <td>
+                <p>Domains of an assessment: conceptual, social, practical, General Adaptive composite (GAC)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Weschler Memory Scale (WMS-IV)</p>
+            </td>
+            <td>
+                <p>Comprehensive memory test for adults (16-90). 5 index scores: auditory memory, visual memory, visual working memory, immediate memory, delayed memory.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Wide Range Assessment of Memory and Learning (WRAML2)</p>
+            </td>
+            <td>
+                <p>A comprehensive memory test (ages 5-90), designed for clinical populations (brain damage etc.) 6 core subtests and 3 core indices: Verbal memory, visual memory, and attention-concentration</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>MMPI-2</p>
+            </td>
+            <td>
+                <p>A self-report personality inventory, contains 567 true-false items.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Self-Directed Search (SDS)</p>
+            </td>
+            <td>
+                <p>Self-Assessed career inventory for ages 15+ to identify career interests and match to occupations. Categories: Realistic, Investigative, Artistic, Social, Enterprising, and Conventional (RIASEC)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Strong Interest Inventory (SII)</p>
+            </td>
+            <td>
+                <p>Career Assessment Instrument (ages 16+). 5 scales: General Occupational Themes, 30 Basic interest scales, 260 occupational scales, 5 personal style scales, 3 administrative indices</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>16 Personality Factor Questionnaire (16PF)</p>
+            </td>
+            <td>
+                <p>Self-report measure for personality (ages 16+). 185 items, 16 scales: Warmth, Reasoning, Emotional stability, dominance, liveliness, rule-consciousness, social boldness, sensitivity, vigilance, abstractedness, privateness, apprehension, openness to change, self-reliance, perfectionism, and tension.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>NEO-PI-R</p>
+            </td>
+            <td>
+                <p>Personality inventory based on the five factor model. 240 multiple choice. Self or other report. Ages 17+</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>BDI-II</p>
+            </td>
+            <td>
+                <p>Self-report, 21-item depression inventory for ages 13+</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Global Assessment of Functioning (GAF)</p>
+            </td>
+            <td>
+                <p>A measure of someone&rsquo;s overall psychological functioning. 3 domains: psychological symptom severity, social functioning, occupational impairment. Each domain is rated from 0-100 by the psychologist, based on available information.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>State-trait anxiety inventory (STAI)</p>
+            </td>
+            <td>
+                <p>Common measure for anxiety which provides two related anxiety constructs: an anxious disposition across life contexts, and anxious responses to immediate or temporary threatening stimuli or conditions</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Outcome Rating Scales (ORS)</p>
+            </td>
+            <td>
+                <p>A brief measure of client progress, used in mental health treatment settings. Completed by the client (each session usually). 4 sliding scales, that ask how you are going: Individually, Interpersonally, Socially, and Overall.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Achenbach System of Empiraclly Based Assessment (ASEBA)</p>
+            </td>
+            <td>
+                <p>Group of assessment tools including parent, teacher, and self-report of adaptive functioning. Ages 6-18.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Child Behaviour Checklists (CBCL)</p>
+            </td>
+            <td>
+                <p>Widely used measure of emotional and behavioural functioning in children. Parent-rated. Oter forms for teacher and self. Ages 6-18</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Mental Status Examination (MSE)</p>
+            </td>
+            <td>
+                <p>Developed by Adolf Meyer. Process of talking with and observing the client. Areas considered: general appearance (inc. posture, facial expression), feeling and mood, perception, thinking, orientation, insight, and speech.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>PHQ-9 (Patient Health Questionnaire-9) is a screener and diagnostic tool for what?</p>
+            </td>
+            <td>
+                <div>
+                    <p>
+                        A multipurpose instrument for screening, diagnosing, monitoring and measuring the severity of depression. 9 Likert-scale items.
+                    </p>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Here are 6 clinical scales from the PAI, what are the remaining 5?</p>
+                <p>Somatic concerns</p>
+                <p>Anxiety Related Disorders</p>
+                <p>Mania</p>
+                <p>Schizophrenia</p>
+                <p>Antisocial features</p>
+                <p>Drug Problems</p>
+            </td>
+            <td>
+                <p>Here are 5 clinical scales from the PAI, what are the remaining 6?</p>
+                <p>Anxiety</p>
+                <p>Depression</p>
+                <p>Paranoia</p>
+                <p>Borderline features</p>
+                <p>Alcohol Problems</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Here are 2 treatment consideration scales from the PAI, what are the remaining 3?</p>
+                <p>Aggression</p>
+                <p>Suicidal ideation</p>
+            </td>
+            <td>
+                <p>Here are 3 treatment consideration scales from the PAI, what are the remaining 2?</p>
+                <p>Nonsupport (lack of support)</p>
+                <p>Stress</p>
+                <p>Treatment rejection</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Dominance and Warmth fall under what category in the PAI?</p>
+            </td>
+            <td>
+                <p>What are the two scales in the "interpersonal" category of the PAI?</p>
+            </td>
+        </tr>
+        
+
+        
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>
