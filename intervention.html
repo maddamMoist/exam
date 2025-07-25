@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>NPE Revision</title>
+	<link href="styles.css" rel="stylesheet" type="text/css">
+
+<script>  
+
+	var shuffledNotes;
+	var currentNote;
+	var notes = [];
+
+	const THINK = 0;
+	const CHECK = 1;
+
+	var state = THINK;
+
+
+	function clickAnywhere()
+	{
+		console.log("click!");
+		if (state==THINK)
+		{
+			document.getElementById("content").innerHTML = "QUESTION:<br/>" + currentNote[0] + "<br/><br/>ANSWER:<br/>" + currentNote[1];
+			state = CHECK;
+		}
+		else if (state == CHECK)
+		{
+			showNewQuestion();
+			state = THINK;
+		}
+	}
+
+	function showNewQuestion()
+	{
+		if(shuffledNotes == undefined || shuffledNotes.length == 0)
+		{
+			shuffledNotes = [].concat(notes);
+			shuffle(shuffledNotes);
+			for(var i = 0; i < shuffledNotes.length; i++)
+			{
+				if(Math.random() > 0.5)
+				{
+					var note = shuffledNotes[i];
+					var temp = note[0];
+					note[0] = note[1];
+					note[1] = temp;
+				}
+			}
+		}
+
+		currentNote = shuffledNotes.pop();
+		document.getElementById("content").innerHTML = "QUESTION:<br/>" + currentNote[0];
+	}
+
+
+	function init()
+	{
+		document.body.addEventListener('click', clickAnywhere, true); 
+		var table = document.getElementById("sourceTable");
+		console.log(table);
+		for (var i = 0, row; row = table.rows[i]; i++) 
+		{
+			notes.push([row.cells[0].innerHTML, row.cells[1].innerHTML]);
+		}
+		showNewQuestion();
+	}
+
+		
+	
+
+	function shuffle(array) 
+	{
+	  let currentIndex = array.length;
+
+	  // While there remain elements to shuffle...
+	  while (currentIndex != 0) {
+
+	    // Pick a remaining element...
+	    let randomIndex = Math.floor(Math.random() * currentIndex);
+	    currentIndex--;
+
+	    // And swap it with the current element.
+	    [array[currentIndex], array[randomIndex]] = [
+	      array[randomIndex], array[currentIndex]];
+	  }
+	}
+</script>
+</head>
+
+<body onload="init();">
+
+<div id="content">
+
+</div>
+
+<table id = "sourceTable" style = "visibility: hidden;">
+    <tbody>
+        
+        <tr>
+            <td>
+                <p>NPE&rsquo;s components of active listening</p>
+            </td>
+            <td>
+                <p>NPE&rsquo;s main components of what?</p>
+                <div>
+                    <ul>
+                        <li>Empathic responding</li>
+                        <li>Reflection and summarisation</li>
+                        <li>Questioning</li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Important factors of empathic responding</p>
+            </td>
+            <td>
+                <p>This component of active listening stresses the importance of stating your perception of the clients feelings, but also linking it accurately to the cause/context they describe, and asking them if you have interpreted them correctly</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Difference between Reflections and summarisations</p>
+            </td>
+            <td>
+                <p>______s can be minimal, such as repeating key words or phrases to demonstrate unstertanding. ______s are longer, and can cover lots of content (from multiple sessions).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>The purpose of Reflections and Summarisations</p>
+            </td>
+            <td>
+                <p>Two counselling skills that do the following:</p>
+                <div>
+                    <ul>
+                        <li>Encourage clients to elaborate on their experiences.</li>
+                        <li>Encourage a sense of being understood.</li>
+                        <li>Provide the opportunity for the client to correct the psychologist's misinterpretations.</li>
+                        <li>Focus the discussion on topics most likely to be helpful to the client</li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Two types of questions</p>
+            </td>
+            <td>
+                <p>open and closed _________ are both useful for different purposes: open discussion or specific information</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>An ethical obligation regarding questions</p>
+            </td>
+            <td>
+                <p>________ must be formulated to collect information that is relevant to service provision and client understanding, rather than to satisfy curiosity.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>5 stages of change model by Ivey et al. 2014</p>
+            </td>
+            <td>
+                <div>
+                    <ul>
+                        <li>pre-contemplation</li>
+                        <li>contemplation</li>
+                        <li>preparation</li>
+                        <li>action</li>
+                        <li>maintainence</li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What percentage of successful therapeutic outcomes can be attributed to the therapeutic relationship?</p>
+            </td>
+            <td>
+                <p>30% of successful therapeutic outcomes can be attributed to what?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Person-centred therapy is about what? And was first written about by who?</p>
+            </td>
+            <td>
+                <p>The idea that the personal characteristics of the therapist can influence client outcomes was first discussed by Rogers and became known as what?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>In the context of the therapeutic relationship, what are the three Rs about (resistance, ruptures, reenactments)?</p>
+            </td>
+            <td>
+                <p>What are the 3 Rs of the therapeutic relationship:</p>
+                <div>
+                    <ul>
+                        <li>The client is avoidant or ambivalent towards therapy and does not engage fully.</li>
+                        <li>Something happens which disrupts the alliance between the client and therapist.</li>
+                        <li>The same problem that the client is having in their life more broadly is being played out in therapy.</li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Define CBT</p>
+            </td>
+            <td>
+                <p>An outcome-based, time-limited treatment approach that aims to directly target irrational or maladaptive cognitive patterns and establish healthy and helpful behavioural patterns</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Three levels of cognitive distortions, as recognised in cognitive therapies</p>
+            </td>
+            <td>
+                    <ol>
+                        <li>Automatic thoughts</li>
+                        <li>Maladaptive assumptions</li>
+                        <li>Dysfunctional schemas</li>
+                    </ol>
+                <p>A hierarchy of what? (listed from most to least accessible)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>3 examples of contemporary manifestations of behaviour therapy</p>
+            </td>
+            <td>
+                <p>These are examples of what?</p>
+                <div>
+                    <ul>
+                        <li>Exposure therapy</li>
+                        <li>Behavioural experiments</li>
+                        <li>Internal regulation strategies</li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>4 general steps of cognitive therapies</p>
+            </td>
+            <td>
+                    <ol>
+                        <li>The therapist creates a supportive atmosphere, reducing anxiety.</li>
+                        <li>The clients assumptions and beliefs are drawn out through socratic dialogue and thoughtful questioning.</li>
+                        <li>Clients are encouraged to test their beliefs and assumptions</li>
+                        <li>Clients are assisted in modifying their thoughts and finding alternative thoughts</li>
+                    </ol>
+                    <p>These are the 4 steps of what family of therapies?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>ABCDEF of rational emotive behaviour therapy</p>
+            </td>
+            <td>
+                <p>What therapy model?<br/>Clients are helped to identify Activating events, Beiliefs, and Consequences. They are then helped to Disupute the thoughts, and checking the Effect of the change, and the new Feelings associated with the change.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What is a chain analysis?</p>
+            </td>
+            <td>
+                <p>An analysis (under CBT) that identifies vulnerability factors and activating events, and the resulting thoughts, feelings and behaviours.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What is a behavioural experiment?</p>
+            </td>
+            <td>
+                <p>An experiential activity, often set as homework, where the client tests the validity of a current or new belief</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What is motivational interviewing?</p>
+            </td>
+            <td>
+                <p>A collection of conversational techniques designed to move clients towards greater levels of readiness to change, which mostly applies substance dependence difficulties</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>The 3 fundamental components of motivational interviewing include Collaboration and evocation, what is the other?</p>
+            </td>
+            <td>
+                <p>The 3 fundamental components of motivational interviewing includes autonomy, what are the other 2?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What are the SNAP risk factors?</p>
+            </td>
+            <td>
+                <p>Smoking, Nutrition, Alcohol, Physical activity</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What is it important NOT to do in motivational interviewing?</p>
+            </td>
+            <td>
+                <p>Under which intervention should the therapist refrain from providing motivation, and instead assist the client in finding their own motivation</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What is psychoeducation?</p>
+            </td>
+            <td>
+                <p>An intervention that involves delivering information to a client about their psychological illness, including effective treatments, empowering them (and their families) to self-treat.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>An underlying assumption of behaviour modification is that behaviour is controlled by what?</p>
+            </td>
+            <td>
+                <p>What do antecedents and consequences control?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>In the context of behaviour modification, what does a functional analysis involve?</p>
+            </td>
+            <td>
+                <p>In the context of behaviour modification, what process involves identifying the antecedents and consequences supporting a behaviour, and measuring the frequency and intensity of the behaviour?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>3 underlying assumptions of behaviour modification?</p>
+            </td>
+            <td>
+                <p>What intervention system do these assumptions belong to?</p>
+                    <ul>
+                        <li>Antecedents and consequences control behaviour.</li>
+                        <li>Both appropriate and inappropriate behaviour is learned.</li>
+                        <li>Changing antecedents and consequences will increase or decrease the associated behaviour</li>
+                    </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>One of the 2 main categories of reinforcement schedules is "Continuous", what is the other?</p>
+            </td>
+            <td>
+                <p>One of the 2 main categories of reinforcement schedules is "Intermittent", what is the other?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Define a continuous reinforcement schedule</p>
+            </td>
+            <td>
+                <p>What type of reinforcement schedule involves reinforcement after every occurrence of the target behaviour?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Define an intermittent reinforcement schedule</p>
+            </td>
+            <td>
+                <p>What family of reinforcement schedules involves delivering reinforcement after a certain number (or amount of time) of occurrences of the target behaviour?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>In the context of intermittent reinforcement, what is an interval schedule?</p>
+            </td>
+            <td>
+                <p>What type of reinforcement schedule involves waiting for a certain amount if time before the target behaviour can be reinforced?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>In the context of intermittent reinforcement, what is a ratio schedule?</p>
+            </td>
+            <td>
+                <p>What type of reinforcement schedule involves waiting for a certain number of occurrences of the target behaviour before reinforcing it?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>How is progress measured in the context of Exposure Therapy?</p>
+            </td>
+            <td>
+                <p>Subjective Units of Distress (SUDS) can be used in desensitization-based interventions such as?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>The first 2 main steps of Exposure Therapy are Preparation and creating an exposure hierarchy, what are the last 2?</p>
+            </td>
+            <td>
+                <p>The last 2 steps of Exposure therapy are initial exposure and repeated exposure, what are the first 2?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Behavioural activation is often referred to as?</p>
+            </td>
+            <td>
+                <p>Which intervention, commonly used to treat depression, is often referred to as activity scheduling or reward planning?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Which intervention increases mood by decreasing rumination, as a result of having new activities to focus on?</p>
+            </td>
+            <td>
+                <p>What negative cognitive pattern does behavioural activation decrease?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Behavioural activation studies have shown what important fact, regarding motivation?</p>
+            </td>
+            <td>
+                <p>The body of research related to which intervention has shown that people can feel more motivated once they begin an activity?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Define self-management, as an intervention category</p>
+            </td>
+            <td>
+                <p>An intervention category which involves informing the client of the basic principles of behaviourism, and helping the client to leverage these principles in their own life. Such as small-chunking and rewarding one's self for progress.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Define relaxation strategies</p>
+            </td>
+            <td>
+                <p>A category of interventions which includes progressive muscle relaxation and breathing retraining, and aims to provide the client with tools to immediately reduce anxiety</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Three ways in which modern therapeutic applications of psychodynamic theory are different to traditional applications?</p>
+            </td>
+            <td>
+                <p>Modern applications of this traditional intervention are now more time-limited, outcome focused, and focused on interpersonal conflicts (as opposed to exclusively intrapersonal)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Three conditions treatable by psychodynamic approaches?</p>
+            </td>
+            <td>
+                <p>Depression, anxiety disorders, and personality disorders can be treated by this traditional psychotherapeutic intervention, with outcomes comparable to CBT and medications.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Interpersonal therapy (IPT) departs from psychodynamic therapy in which way primarily?</p>
+            </td>
+            <td>
+                <p>This variant of psychodynamic therapy focuses on the clients immediate psychosocial environment, rather than internal experiences and the past. It aims to improve the way the client relates to other people.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>In which category of therapy does the therapist traditionally do very little to direct the dialogue, and simply observes a client's avoidance of certain topics, contradictory expressions, and repeated themes in order to detect internal conflicts?</p>
+            </td>
+            <td>
+                <p>How does a therapist detect underlying issues in psychodynamic therapy?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>How does a therapist address internal conflicts in psychodynamic therapy?</p>
+            </td>
+            <td>
+                <p>The therapist uses goal setting, reality testing, confrontation, and empathic validation to challenge internal conflicts in which traditional intervention?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>In interpersonal therapy (IPT), the client is assigned the role of sick, in order to?</p>
+            </td>
+            <td>
+                <p>In interpersonal therapy (IPT), what role is applied to the client in order to relieve them of feeling responsible for their condition?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>3 phases of interpersonal therapy (IPT)</p>
+            </td>
+            <td>
+                    <ol>
+                        <li>Identifying interpersonal problems</li>
+                        <li>Therapist equips client with strategies to manage problems.</li>
+                        <li>Collaboratively planning to terminate the therapy relationship (which motivates client to get the most out of remaining time).</li>
+                    </ol>
+                    <p> 3 phases of which therapy?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>4 main strategies to manage interpersonal problems in interpersonal therapy (ITP)</p>
+            </td>
+            <td>
+                    <ol>
+                        <li>Enhancing social support</li>
+                        <li>Decreasing interpersonal stress</li>
+                        <li>Processing emotions</li>
+                        <li>Improving interpersonal skills</li>
+                    </ol>
+                    <p>
+                    4 main strategies to manage interpersonal problems in which therapy</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Family Systems interventions aim to improve?</p>
+            </td>
+            <td>
+                <p>Marital/couple relationships and family dynamics are the focus in what type of intervention?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>An intervention that extends the family systems approach and considers broader society beyond the family. Particularly useful for adolescents.</p>
+            </td>
+            <td>
+                <p>How do ecological interventions relate to family systems interventions?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What are humanistic interventions?</p>
+            </td>
+            <td>
+                <p>What broad category of intervention emphasises the autonomy and uniqueness of the client, and aims to guide the client towards growth and self-fulfilment?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Which type of intervention is particularly appropriate for indigenous Australians?</p>
+            </td>
+            <td>
+                <p>Narrative therapy is particularly useful for working with which cultural group?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What is the primary goal of solution-focused interventions?</p>
+            </td>
+            <td>
+                <p>Which type of intervention primarily aims to help the client establish and visualise the goals they want to achieve, evaluate their strengths and weaknesses, and establish efficient problem solving strategies?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What is a psychotropic agent?</p>
+            </td>
+            <td>
+                <p>An agent (medical) that is alters activities of receptors, enzymes, ion channels, and chemical transporter systems. It influences the central nervous system.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What is pharmacodynamics?</p>
+            </td>
+            <td>
+                <p>Psychotropic agents can influence the patient by activating or inhibiting. The means by which a psychotropic agent has an impact is known as what?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What is Pharmacokinetics?</p>
+            </td>
+            <td>
+                <p>The way psychotropic agents pass through the body is known as what?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>4 aspects of pharmacokinetics</p>
+            </td>
+            <td>
+                <p>In the context of medication: absorption, distribution, metabolism, and elimination are aspects of what?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What is the half-life of a drug?</p>
+            </td>
+            <td>
+                <p>The time it takes one half of a drug&rsquo;s concentration to be eliminated from the system is known as what?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What is the therapeutic index of a drug?</p>
+            </td>
+            <td>
+                <p>What is the ratio between the toxic dose to the therapeutic dose of a drug called? (higher number is better)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>When a drug has a high therapeutic index, it can be initiated at a high dose to obtain a desired response faster. What is this type of dose called?</p>
+            </td>
+            <td>
+                <p>What is a loading dose?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>In the context of medication, what is potentiation (1) and synergism (2)?</p>
+            </td>
+            <td>
+                <p>When a second drug enhances the effect of another drug, it is called (1)? And when it enhances the other drug much more than expected (2)?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Key features of Acetylcholine (neurotransmitter)</p>
+            </td>
+            <td>
+                <p>Neurotransmitter involved with learning, memory, and attention</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Key features of Epinephrine (neurotransmitter)</p>
+            </td>
+            <td>
+                <p>Neurotransmitter secreted by endocrine glands above the kidneys. AKA adrenaline. Regulates fight or fight response.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Key features of Norepinephrine (neurotransmitter)</p>
+            </td>
+            <td>
+                <p>Neurotransmitter related to wakefulness and alertness</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Key features of Dopamine (neurotransmitter)</p>
+            </td>
+            <td>
+                <p>Neurotransmitter related to behavioural regulation, movement, learning, mood, and attention. Can be both excitatory and inhibitory</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Key features of Serotonin (neurotransmitter)</p>
+            </td>
+            <td>
+                <p>Neurotransmitter related to inhibition of activity and behaviour. Relevant for mood regulation, appetite, and sleep.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Key features of GABA (neurotransmitter)</p>
+            </td>
+            <td>
+                <p>Neurotransmitter that is inhibitory and can produce stability by decreasing neural transmission. Barbiturates and benzodiazepines increase it.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What medications are typically prescribed for cluster A personality disorders?</p>
+            </td>
+            <td>
+                <p>Which cluster of personality disorders are treated with low doses of atypical antipsychotic medications such as risperidone, olanzapine, or quetiapine.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What medications are typically prescribed for cluster B personality disorders?</p>
+            </td>
+            <td>
+                <p>Which cluster of personality disorders are treated with duloxetine and SSRI antidepressants? (and sometimes gabapentin and naltrexone for anxiety/sedation)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What medications are typically prescribed for cluster C personality disorders?</p>
+            </td>
+            <td>
+                <p>Which cluster of personality disorders are treated with SSRIs or a long-acting benzodiazepine such as clonazepam, for anxious and avoidant symptoms?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What medications are usually effective at managing ADHD symptoms?</p>
+            </td>
+            <td>
+                <p>Dexamphetamine and mephinidate(Ritalin) are usually effective at managing what disorder?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What mood stabilising drug is often used to treat bipolar disorder?</p>
+            </td>
+            <td>
+                <p>Lithium is often used to stabilise mood when treating which disorder?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What does the pharmaceutical treatment of Dementia look like?</p>
+            </td>
+            <td>
+                <p>When treating this disorder, initially donepizal (Aricept) is used to slow the rate of cognitive decline, and then antipsychotics (risperidone) are used in the later stages.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What drugs are commonly used to treat anxiety disorders?</p>
+            </td>
+            <td>
+                <p>Diazepam (Valium) and related drugs (benzodiazepines) are often used to treat this group of disorders, but due to concerns around dependence and tolerance, antidepressants are now often used instead.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>3 common antidepressants for treating MDD</p>
+            </td>
+            <td>
+                <p>Sertraline, citalopram, and fluoxetine are what kind of drugs?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What kind of drugs are used to treat OCD?</p>
+            </td>
+            <td>
+                 
+                <p>The same SSRI's as for MDD, and an clomipramine.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What does the pharmaceutical treatment of schizophrenia look like?</p>
+            </td>
+            <td>
+                 
+                <p>Antipsychotics. If most fail, then clozapine is used. Sometimes mood stabilisers are used too.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What does the treatment of sleep apnea look like?</p>
+            </td>
+            <td>
+                <p>Continuous positive airway pressure treatment (CPAP) and modafinil.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What does the pharmaceutical treatment of insomnia look like?</p>
+            </td>
+            <td>
+                <p>Short term use of benzodiazepines.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What drugs are often used to treat alcohol dependence?</p>
+            </td>
+            <td>
+                <p>Acamprosate or naltrexone is used to treat what kind of substance dependence?</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>What drugs are used to treat opioid dependence?</p>
+            </td>
+            <td>
+                <p>Naltrexone or methadone are used to treat dependence on which category of drugs?</p>
+            </td>
+        </tr>
+
+
+        <tr><td>What is free association in psychoanalysis?</td><td>A technique where clients verbalize thoughts without censorship to uncover unconscious material.</td></tr>
+<tr><td>What is transference in psychoanalysis?</td><td>The projection of feelings about important others onto the therapist.</td></tr>
+<tr><td>What is countertransference in psychoanalysis?</td><td>The therapist's emotional reaction to the client, influenced by the therapist's own history.</td></tr>
+<tr><td>What does resistance refer to in psychoanalysis?</td><td>Client behaviors or thoughts that hinder progress in therapy, often unconscious.</td></tr>
+<tr><td>What is interpretation in psychoanalysis?</td><td>The therapist explains the meaning of unconscious material to the client.</td></tr>
+<tr><td>Two of the four goals of Bowenian family therapy are differentiation of self and reducing emotional reactivity. What are the other two?</td><td>Decreasing triangulation and improving intergenerational relationships.</td></tr>
+<tr><td>What is triangulation in Bowenian family therapy?</td><td>When two family members in conflict involve a third party to stabilize tension.</td></tr>
+<tr><td>What is differentiation of self in Bowenian theory?</td><td>The ability to maintain a sense of self while staying emotionally connected to family.</td></tr>
+<tr><td>What does Bowenian therapy aim to change first: the individual or the family system?</td><td>The family system, by addressing patterns across generations.</td></tr>
+<tr><td>What is a genogram used for in Bowenian family therapy?</td><td>A diagram mapping family relationships and patterns across generations.</td></tr>
+<tr><td>What is the main focus of Solution-Focused Brief Therapy (SFBT)?</td><td>Building solutions based on client strengths and past successes, rather than analyzing problems.</td></tr>
+<tr><td>What is the Miracle Question in SFBT?</td><td>An intervention asking clients to imagine how life would look if the problem disappeared overnight.</td></tr>
+<tr><td>What are exceptions in SFBT?</td><td>Times when the client's problem was absent or less severe, used to identify solutions.</td></tr>
+<tr><td>What is scaling in SFBT?</td><td>Asking clients to rate progress or confidence on a numerical scale, typically 0–10.</td></tr>
+<tr><td>Two key principles of SFBT are “If it works, do more of it” and “If it doesn’t work, do something different.” What’s another principle?</td><td>“If it isn’t broken, don’t fix it.”</td></tr>
+<tr><td>What is psychoeducation?</td><td>The process of providing clients with information about their condition and treatment to enhance understanding and coping.</td></tr>
+<tr><td>Name two goals of psychoeducation.</td><td>Increasing client knowledge and promoting treatment adherence.</td></tr>
+<tr><td>List two examples of psychoeducation topics.</td><td>Understanding symptoms of depression; how medications work and their side effects.</td></tr>
+<tr><td>What is one benefit of psychoeducation in group settings?</td><td>Peer support and normalization of experiences.</td></tr>
+<tr><td>What format can psychoeducation take?</td><td>Verbal explanation, written material, videos, or interactive workshops.</td></tr>
+<tr><td>Name two common side effects of SSRIs.</td><td>Nausea and sexual dysfunction.</td></tr>
+<tr><td>Besides nausea and sexual dysfunction, what are two other SSRI side effects?</td><td>Weight gain and insomnia.</td></tr>
+<tr><td>What is serotonin syndrome and why is it relevant to SSRIs?</td><td>A potentially life-threatening condition caused by excess serotonin, possible when combining serotonergic drugs.</td></tr>
+<tr><td>What is the typical onset time for SSRIs to show benefit?</td><td>2 to 6 weeks.</td></tr>
+<tr><td>What withdrawal effect can occur if SSRIs are stopped abruptly?</td><td>Discontinuation syndrome, causing flu-like symptoms, insomnia, and irritability.</td></tr>
+<tr><td>What is externalization in Narrative Therapy?</td><td>Separating the person from the problem, e.g., “the depression is trying to control you.”</td></tr>
+<tr><td>What is re-authoring in Narrative Therapy?</td><td>Helping clients construct alternative, empowering stories about their lives.</td></tr>
+<tr><td>What are unique outcomes in Narrative Therapy?</td><td>Instances where the problem did not dominate, offering a basis for new narratives.</td></tr>
+<tr><td>What role does language play in Narrative Therapy?</td><td>Language shapes reality; therapists help clients use language to create preferred stories.</td></tr>
+<tr><td>What is the main focus of Narrative Therapy?</td><td>Deconstructing problem-saturated stories and building alternative narratives aligned with client values.</td></tr>
+<tr><td>What is the main goal of Interpersonal Therapy (IPT)?</td><td>To reduce depressive symptoms by improving interpersonal functioning.</td></tr>
+<tr><td>Name two problem areas commonly addressed in IPT.</td><td>Grief and interpersonal disputes.</td></tr>
+<tr><td>Besides grief and disputes, what are two other IPT problem areas?</td><td>Role transitions and interpersonal deficits.</td></tr>
+<tr><td>What is the typical duration of IPT?</td><td>12–16 weeks, short-term.</td></tr>
+<tr><td>What is a key technique used in IPT for role transitions?</td><td>Role-play and exploring social supports for new roles.</td></tr>
+<tr><td>What is the core belief of Humanistic therapy?</td><td>People have an inherent capacity for growth and self-actualization.</td></tr>
+<tr><td>What are the three core conditions in Rogers’ Person-Centered Therapy?</td><td>Empathy, unconditional positive regard, and congruence.</td></tr>
+<tr><td>What does unconditional positive regard mean?</td><td>Accepting and valuing the client without judgment.</td></tr>
+<tr><td>What is the focus of Gestalt therapy (a humanistic approach)?</td><td>Here-and-now awareness and integrating fragmented parts of the self.</td></tr>
+<tr><td>What is self-actualization according to Humanistic therapy?</td><td>The process of realizing one's full potential and authentic self.</td></tr>
+<tr><td>What is the goal of problem-solving training?</td><td>Teaching structured steps to identify and implement effective solutions to problems.</td></tr>
+<tr><td>Name two steps in the problem-solving model.</td><td>Define the problem clearly and brainstorm possible solutions.</td></tr>
+<tr><td>What is the purpose of anger management training?</td><td>To help clients recognize triggers and use strategies to control their response.</td></tr>
+<tr><td>What is a key component of social skills training?</td><td>Role-playing to practice appropriate social behaviors.</td></tr>
+<tr><td>What does assertiveness training teach?</td><td>Expressing needs and rights respectfully without aggression or passivity.</td></tr>
+<tr><td>What is a common mindfulness technique taught in stress management?</td><td>Focused breathing or body scan exercises.</td></tr>
+<tr><td>What is one core skill taught in parenting programs?</td><td>Positive reinforcement to encourage desirable behaviors in children.</td></tr>
+
+        
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>
